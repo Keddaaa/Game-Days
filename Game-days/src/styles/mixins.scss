@@ -1,0 +1,93 @@
+// display flex mixin
+// ===========================================================================
+@mixin dflex($align: center, $justify: center, $gap: 0, $direction: row) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	gap: $gap;
+	flex-direction: $direction;
+}
+// ===========================================================================
+
+@mixin dgrid($columns: 3, $rows: 3, $gap: 1vw) {
+	display: grid;
+	// nb colums et lignes
+	grid-template-columns: repeat($columns, 1fr);
+	grid-template-rows: repeat($rows, 1fr);
+	gap: $gap;
+}
+
+// position absolute / fixed mixin
+// ===========================================================================
+
+// position absolute top left
+// --------------------------------------------------------------------------
+@mixin positionTopLeft($top: 0, $left: 0) {
+	position: absolute;
+	top: $top;
+	left: $left;
+}
+// --------------------------------------------------------------------------
+// position absolute left bottom
+// --------------------------------------------------------------------------
+@mixin positionLeftBottom($left: 0, $bottom: 0) {
+	position: absolute;
+	left: $left;
+	bottom: $bottom;
+}
+// --------------------------------------------------------------------------
+
+// position absolute right bottom
+// --------------------------------------------------------------------------
+@mixin positionRightBottom($right: 0, $bottom: 0) {
+	position: absolute;
+	right: $right;
+	bottom: $bottom;
+}
+// --------------------------------------------------------------------------
+
+// position fixed top left
+// --------------------------------------------------------------------------
+@mixin positionFixedTopLeft($top: 0, $left: 0) {
+	position: fixed;
+	top: $top;
+	left: $left;
+}
+// --------------------------------------------------------------------------
+
+// position fixed left bottom
+// --------------------------------------------------------------------------
+@mixin positionFixedLeftBottom($left: 0, $bottom: 0) {
+	position: fixed;
+	left: $left;
+	bottom: $bottom;
+}
+
+// position fixed right bottom
+// --------------------------------------------------------------------------
+@mixin positionFixedRightBottom($right: 0, $bottom: 0) {
+	position: fixed;
+	right: $right;
+	bottom: $bottom;
+}
+
+// ===========================================================================
+
+// button
+// ===========================================================================
+
+// button
+// --------------------------------------------------------------------------
+@mixin button() {
+	cursor: pointer;
+	padding: 1.2vh 1vw;
+	border-radius: 10vw;
+	font-size: 1vw;
+	font-weight: 300;
+	@include dflex(center, center, 0.7vw);
+	border: rgba(0, 0, 0, 0.27) 0.1vw solid;
+	background-color: transparent;
+	text-decoration: none;
+	color: black;
+}
+// --------------------------------------------------------------------------
