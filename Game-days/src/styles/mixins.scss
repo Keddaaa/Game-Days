@@ -70,24 +70,3 @@
 	right: $right;
 	bottom: $bottom;
 }
-
-// ===========================================================================
-
-// button
-// ===========================================================================
-
-// button
-// --------------------------------------------------------------------------
-@mixin button() {
-	cursor: pointer;
-	padding: 1.2vh 1vw;
-	border-radius: 10vw;
-	font-size: 1vw;
-	font-weight: 300;
-	@include dflex(center, center, 0.7vw);
-	border: rgba(0, 0, 0, 0.27) 0.1vw solid;
-	background-color: transparent;
-	text-decoration: none;
-	color: black;
-}
-// --------------------------------------------------------------------------

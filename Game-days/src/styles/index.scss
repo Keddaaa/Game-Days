@@ -1,1 +1,27 @@
 @import "./mixins.scss";
+
+@import "./css/clash-grotesk.css";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "ClashGrotesk-Variable", sans-serif;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+h1 {
+	font-family: "ClashGrotesk-Bold", sans-serif;
+}
+
+h2 {
+	font-family: "ClashGrotesk-Semibold", sans-serif;
+}
+
+p {
+	font-family: "ClashGrotesk-Medium", sans-serif;
+}
