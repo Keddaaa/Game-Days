@@ -48,8 +48,10 @@
 
 // position fixed top left
 // --------------------------------------------------------------------------
-@mixin positionFixedTopLeft($top: 0, $left: 0) {
+@mixin positionFixedTopLeft($top: 0, $left: 0, $X: 0, $Y: 0) {
 	position: fixed;
+	transform: translate($X, $Y);
+	z-index: 1000;
 	top: $top;
 	left: $left;
 }
