@@ -7,11 +7,14 @@ nav {
 	width: fit-content;
 	border-radius: 0.5vw;
 	background-color: #1a1a1a;
+	opacity: 0.85;
+
 	ul {
 		@include dflex(center, center, 2vw);
+
 		li {
 			@include dflex(center, center);
-			width: 6vw;
+			width: 7vw;
 			a {
 				font-family: "ClashGrotesk-Medium", sans-serif;
 				text-decoration: none;

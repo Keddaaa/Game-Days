@@ -1,5 +1,40 @@
 @use "../../styles/mixins.scss" as *;
 
 .index {
+	width: 100%;
+	height: 100vh;
 	@include dflex();
+	background-color: #fff5e4;
+
+	.hero {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		img {
+			margin: auto;
+			padding: 1vw;
+			width: 100%;
+			border-radius: 2vw;
+		}
+
+		.hero-content {
+			@include dflex(center, center, 1vw, column);
+			position: absolute;
+			top: 50%;
+			color: white;
+			h1 {
+				font-family: "ClashGrotesk-Bold", sans-serif;
+				font-size: clamp(2rem, 6vw, 5rem);
+				margin-bottom: 1vh;
+			}
+
+			p {
+				font-family: "ClashGrotesk-Medium", sans-serif;
+				font-size: clamp(1rem, 2.5vw, 2rem);
+				margin-bottom: 2vh;
+			}
+		}
+	}
 }
