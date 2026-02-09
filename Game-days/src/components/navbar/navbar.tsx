@@ -1,25 +1,39 @@
 import React from "react";
 import "./navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+	const location = useLocation();
+
+	const navLinks = [
+		{ path: "/", label: "Accueil" },
+		{ path: "/evenement", label: "L'événement" },
+		{ path: "/vote", label: "Vote tes jeux" },
+		{ path: "/contact", label: "Contact" },
+	];
+
 	return (
-		<nav>
-			<ul>
-				<li>
-					<Link to="">Accueil</Link>
-				</li>
-				<li>
-					<Link to="">L’événement</Link>
-				</li>
-				<li>
-					<Link to="">Vote tes jeux</Link>
-				</li>
-				<li>
-					<Link to="">Contact</Link>
-				</li>
-			</ul>
-		</nav>
+		<div className="navbar-container">
+			<nav className="nav-links">
+				<ul>
+					{navLinks.map((link) => (
+						<li key={link.path}>
+							<Link
+								to={link.path}
+								className={location.pathname === link.path ? "active" : ""}
+							>
+								{link.label}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</nav>
+			<nav className="nav-login">
+				<Link to="/login" className="login-btn">
+					S'inscrire/connexion
+				</Link>
+			</nav>
+		</div>
 	);
 };
 
