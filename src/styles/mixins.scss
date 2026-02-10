@@ -1,20 +1,20 @@
 // display flex mixin
 // ===========================================================================
 @mixin dflex($align: center, $justify: center, $gap: 0, $direction: row) {
-	display: flex;
-	align-items: $align;
-	justify-content: $justify;
-	gap: $gap;
-	flex-direction: $direction;
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+    flex-direction: $direction;
 }
 // ===========================================================================
 
 @mixin dgrid($columns: 3, $rows: 3, $gap: 1vw) {
-	display: grid;
-	// nb colums et lignes
-	grid-template-columns: repeat($columns, 1fr);
-	grid-template-rows: repeat($rows, 1fr);
-	gap: $gap;
+    display: grid;
+    // nb colums et lignes
+    grid-template-columns: repeat($columns, 1fr);
+    grid-template-rows: repeat($rows, 1fr);
+    gap: $gap;
 }
 
 // position absolute / fixed mixin
@@ -22,53 +22,54 @@
 
 // position absolute top left
 // --------------------------------------------------------------------------
-@mixin positionTopLeft($top: 0, $left: 0) {
-	position: absolute;
-	top: $top;
-	left: $left;
+@mixin positionTopLeft($top: 0, $left: 0, $X: 0, $Y: 0) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate($X, $Y);
 }
 // --------------------------------------------------------------------------
 // position absolute left bottom
 // --------------------------------------------------------------------------
-@mixin positionLeftBottom($left: 0, $bottom: 0) {
-	position: absolute;
-	left: $left;
-	bottom: $bottom;
+@mixin positionBottomLeft($bottom: 0, $left: 0) {
+    position: absolute;
+    bottom: $bottom;
+    left: $left;
 }
 // --------------------------------------------------------------------------
 
 // position absolute right bottom
 // --------------------------------------------------------------------------
 @mixin positionRightBottom($right: 0, $bottom: 0) {
-	position: absolute;
-	right: $right;
-	bottom: $bottom;
+    position: absolute;
+    right: $right;
+    bottom: $bottom;
 }
 // --------------------------------------------------------------------------
 
 // position fixed top left
 // --------------------------------------------------------------------------
 @mixin positionFixedTopLeft($top: 0, $left: 0, $X: 0, $Y: 0) {
-	position: fixed;
-	transform: translate($X, $Y);
-	z-index: 1000;
-	top: $top;
-	left: $left;
+    position: fixed;
+    transform: translate($X, $Y);
+    z-index: 1000;
+    top: $top;
+    left: $left;
 }
 // --------------------------------------------------------------------------
 
 // position fixed left bottom
 // --------------------------------------------------------------------------
 @mixin positionFixedLeftBottom($left: 0, $bottom: 0) {
-	position: fixed;
-	left: $left;
-	bottom: $bottom;
+    position: fixed;
+    left: $left;
+    bottom: $bottom;
 }
 
 // position fixed right bottom
 // --------------------------------------------------------------------------
 @mixin positionFixedRightBottom($right: 0, $bottom: 0) {
-	position: fixed;
-	right: $right;
-	bottom: $bottom;
+    position: fixed;
+    right: $right;
+    bottom: $bottom;
 }
