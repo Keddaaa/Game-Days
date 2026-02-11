@@ -1,12 +1,171 @@
 @use "../../styles/mixins.scss" as *;
 footer {
-    @include dflex(center, center, 0, column);
+    @include dflex(start, start, 1vw, column);
     background-color: #fff5e4;
     width: 100%;
     height: 100vh;
-    .container {
+    overflow: hidden;
+    padding: 2vh 3vw;
+    .footerTop {
         width: 100%;
-        height: 100%;
-        @include dflex(center, center);
+        height: 55vh;
+        // background-color: red;
+        @include dflex(center, center, 1vw);
+
+        img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border: 0.2vw solid #000;
+            border-radius: 3vw;
+        }
+        .textContainer {
+            width: 50%;
+            height: 100%;
+            background-color: #d45ec3;
+            padding: 2vh 2vw;
+            @include dflex(start, space-between, 0, column);
+            border-radius: 2vw;
+            border: 0.2vw solid #000;
+            .text {
+                @include dflex(start, space-between, 1vw, column);
+
+                h2 {
+                    font-family: "ClashGrotesk-Bold", sans-serif;
+                    font-size: 2.5vw;
+                }
+                p {
+                    font-family: "ClashGrotesk-Medium", sans-serif;
+                    &.firstText {
+                        font-size: 2vw;
+                    }
+                    &.secondText {
+                        font-size: 1.5vw;
+                    }
+                }
+            }
+            .buttonContainer {
+                @include dflex(center, center, 1vw);
+                button {
+                    @include dflex(center, center);
+                    font-family: "ClashGrotesk-Medium", sans-serif;
+                    font-size: 2vw;
+                    background-color: #000000;
+                    border-radius: 20vw;
+                    border: none;
+                    width: 23vw;
+                    height: 7vh;
+                    &:first-child {
+                        color: #fff;
+                    }
+                    &:last-child {
+                        width: 7vh;
+                        height: 7vh;
+                        img {
+                            width: 70%;
+                            height: auto;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .footerMiddle {
+        width: 100%;
+        height: 25vh;
+
+        @include dflex(center, space-between, 2vw);
+        .contact {
+            @include dflex(start, center, 1vw, column);
+            width: 50%;
+            height: 100%;
+            padding: 3vh 2vw;
+            background-color: #00141c;
+            color: white;
+            border-radius: 2vw;
+            h3 {
+                font-family: "ClashGrotesk-Bold", sans-serif;
+                font-size: 2vw;
+            }
+            .inputContainer {
+                @include dflex(center, center, 1vw);
+                position: relative;
+                width: 70%;
+                height: 7vh;
+                background-color: transparent;
+                input {
+                    width: 100%;
+                    height: 7vh;
+                    border: none;
+                    border-bottom: 0.2vw solid rgba(255, 255, 255, 0.58);
+                    background-color: transparent;
+                    &::placeholder {
+                        color: rgba(255, 255, 255, 0.58);
+                        font-family: "ClashGrotesk-Regular", sans-serif;
+                        font-size: 1.5vw;
+                    }
+                }
+                button {
+                    @include positionTopLeft(50%, 96%, -50%, -50%);
+                    background-color: transparent;
+                    border: none;
+                    width: auto;
+                    height: 100%;
+                    img {
+                        width: 2vw;
+                        height: auto;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+        .map {
+            width: 50%;
+            height: 100%;
+            border: 0.2vw solid #000;
+            border-radius: 2vw;
+            iframe {
+                width: 100%;
+                border: none;
+                border-radius: 2vw;
+                height: 100%;
+            }
+        }
+    }
+    .footerBottom {
+        width: 100%;
+        height: 20vh;
+        @include dflex(center, space-between, 2vw);
+        .socialLinks {
+            @include dflex(center, space-evenly, 1vw);
+            width: 50%;
+            height: 100%;
+            border-radius: 2vw;
+            p {
+                font-family: "ClashGrotesk-Bold", sans-serif;
+                font-size: 1.7vw;
+            }
+            .socialLinksContainer {
+                @include dflex(center, center, 1vw);
+                // img {
+                //     width: 2vw;
+                //     height: auto;
+                //     object-fit: cover;
+                // }
+            }
+            border: 0.1vw solid #000;
+        }
+        .copyright {
+            font-family: "ClashGrotesk-Semibold", sans-serif;
+            font-size: 1.5vw;
+            color: #000000;
+            width: 50%;
+            height: 100%;
+            border-radius: 2vw;
+            @include dflex(center, center, 1vw, column);
+            text-align: center;
+        }
     }
 }

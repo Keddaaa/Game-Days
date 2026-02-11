@@ -83,6 +83,7 @@
             width: 100%;
             @include dflex(start, start);
             padding: 0.7vh 0;
+
             overflow-x: auto;
             background-color: rgba(255, 193, 100, 1);
             border-top: 0.2vw solid black;
