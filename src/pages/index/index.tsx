@@ -157,36 +157,7 @@ const Index = () => {
                         <img src="./icons/arrowRight.svg" alt="" />
                     </button>
                 </div>
-                {/* <div className="doubleCaroussel">
-                    <article className="caroussel">
-                        <div className="scroll scroll1">
-                            <img src="./img/jeux/deluxe.png" alt="" />
-                            <img src="./img/jeux/2K.png" alt="" />
-                            <img src="./img/jeux/storm.png" alt="" />
-                            <img src="./img/jeux/fighterZ.png" alt="" />
-                        </div>
-                        <div className="scroll scroll1" aria-hidden>
-                            <img src="./img/jeux/deluxe.png" alt="" />
-                            <img src="./img/jeux/2K.png" alt="" />
-                            <img src="./img/jeux/storm.png" alt="" />
-                            <img src="./img/jeux/fighterZ.png" alt="" />
-                        </div>
-                    </article>
-                    <article className="caroussel" aria-hidden>
-                        <div className="scroll scroll2">
-                            <img src="./img/jeux/party.png" alt="" />
-                            <img src="./img/jeux/brawlhalla.png" alt="" />
-                            <img src="./img/jeux/fc.png" alt="" />
-                            <img src="./img/jeux/saber.png" alt="" />
-                        </div>
-                        <div className="scroll scroll2" aria-hidden>
-                            <img src="./img/jeux/party.png" alt="" />
-                            <img src="./img/jeux/brawlhalla.png" alt="" />
-                            <img src="./img/jeux/fc.png" alt="" />
-                            <img src="./img/jeux/saber.png" alt="" />
-                        </div>
-                    </article>
-                </div> */}
+
                 <div className="doubleCaroussel">
                     {imgListCaroussel.map((colonne, colIndex) => (
                         <article

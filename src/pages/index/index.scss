@@ -342,11 +342,11 @@
 
                     @include dflex(start, center, 2vw, column);
                     &.scroll1 {
-                        animation: scrollUp 20s linear infinite;
+                        animation: scrollUp 15s linear infinite;
                     }
 
                     &.scroll2 {
-                        animation: scrollDown 20s linear infinite;
+                        animation: scrollDown 15s linear infinite;
                     }
 
                     img {
