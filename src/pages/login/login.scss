@@ -1,0 +1,222 @@
+.login-page {
+	min-height: 100vh;
+	background-color: #fff5e4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem 2rem;
+
+	@media (max-width: 768px) {
+		padding: 1rem;
+	}
+
+	@media (max-width: 480px) {
+		padding: 0.5rem;
+	}
+}
+
+.login-container {
+	background-color: #00141c;
+	width: 100%;
+	max-width: 2500px;
+	min-height: calc(100vh - 3rem);
+	border-radius: 50px;
+	padding: 2rem;
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	@media (max-width: 768px) {
+		min-height: calc(100vh - 2rem);
+		border-radius: 16px;
+		padding: 1.5rem;
+	}
+
+	@media (max-width: 480px) {
+		min-height: calc(100vh - 1rem);
+		border-radius: 12px;
+		padding: 1rem;
+	}
+}
+
+.back-button {
+	position: absolute;
+	top: 3rem;
+	left: 3rem;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	background-color: rgba(255, 255, 255, 0.2);
+	color: white;
+	text-decoration: none;
+	padding: 1rem 2rem;
+	border-radius: 50px;
+	font-size: 1.1rem;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+
+	svg {
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.form-section {
+	width: 50%;
+	min-width: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center; // Center content horizontally
+	padding: 0 4rem;
+	text-align: center; // Center text
+
+	h1 {
+		color: white;
+		font-size: 3.5rem;
+		margin-bottom: 1rem;
+		font-weight: 500; // Slightly less bold than 600
+		letter-spacing: -1px;
+	}
+
+	.subtitle {
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 1.1rem;
+		margin-bottom: 3rem;
+		font-weight: 300;
+	}
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	width: 100%;
+	max-width: 450px; // Constraint form width
+}
+
+.form-group {
+	position: relative;
+
+	input {
+		width: 100%;
+		background-color: transparent;
+		border: 1px solid rgba(255, 255, 255, 0.5); // Lighter border
+		border-radius: 12px; // Match screenshot radius
+		padding: 1.25rem 1.5rem;
+		color: white;
+		font-size: 1.1rem;
+		transition: all 0.3s ease;
+		font-weight: 300;
+
+		&::placeholder {
+			color: rgba(255, 255, 255, 0.6);
+		}
+
+		&:focus {
+			outline: none;
+			border-color: white;
+		}
+	}
+}
+
+.password-group {
+	position: relative;
+
+	.toggle-password {
+		position: absolute;
+		right: 1.5rem;
+		top: 50%;
+		transform: translateY(-50%);
+		background: transparent;
+		border: none;
+		color: white; // White text for "Cacher"
+		font-size: 1rem;
+		cursor: pointer;
+		padding: 0;
+		font-weight: 300;
+	}
+}
+
+.submit-btn {
+	background-color: white;
+	color: #00141c;
+	border: none;
+	border-radius: 12px; // Match screenshot radius
+	padding: 1rem;
+	font-size: 1.2rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin-top: 1rem;
+	width: 100%;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+	}
+}
+
+.separator {
+	text-align: center;
+	color: white;
+	font-size: 1.1rem;
+	margin: 0.5rem 0;
+	font-weight: 300;
+}
+
+.signup-btn {
+	display: block;
+	text-align: center;
+	background-color: transparent;
+	color: white;
+	text-decoration: none;
+	border: 1px solid rgba(255, 255, 255, 0.5); // Matching border
+	border-radius: 12px; // Match screenshot radius
+	padding: 1rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	transition: all 0.3s ease;
+	width: 100%;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+		border-color: white;
+	}
+}
+
+.copyright {
+	color: rgba(255, 255, 255, 0.4);
+	font-size: 0.75rem;
+	text-align: left;
+	margin-top: 4rem;
+	line-height: 1.5;
+}
+
+.image-section {
+	width: 50%;
+	height: 100%;
+	max-height: 100%; // Ensure it doesn't exceed container height
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		border-radius: 40px;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	@media (max-width: 968px) {
+		display: none;
+	}
+}
