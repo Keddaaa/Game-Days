@@ -92,7 +92,7 @@
                 display: none;
             }
             .defilement-content {
-                @include dflex(center, center, 1.2vw);
+                @include dflex(center, center);
                 animation: defilement 10s linear infinite;
                 p {
                     font-family: "ClashGrotesk-Medium", sans-serif;
