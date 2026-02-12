@@ -1,39 +1,67 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useLocation,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 
-// Pages
+// Pages Desktop
 import Index from "./pages/index/index";
 import Evenement from "./pages/evenement/evenement";
 import Vote from "./pages/vote/vote";
 import Contact from "./pages/contact/contact";
 import Login from "./pages/login/login";
 
-function AppContent() {
-	const location = useLocation();
-	const isLoginPage = location.pathname === "/login";
+// Pages Mobile
+import IndexMobile from "./pages-mobile/index/index";
 
-	return (
-		<>
-			{!isLoginPage && <Navbar />}
-			<Routes>
-				<Route path="/" element={<Index />} />
-				<Route path="/evenement" element={<Evenement />} />
-				<Route path="/vote" element={<Vote />} />
-				<Route path="/contact" element={<Contact />} />
-				<Route path="/login" element={<Login />} />
-			</Routes>
-			{!isLoginPage && <Footer />}
-		</>
-	);
+function AppContent() {
+    const location = useLocation();
+    const isLoginPage = location.pathname === "/login";
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Check if mobile
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        window.addEventListener("resize", handleResize);
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return (
+        <>
+            {!isLoginPage && !isMobile && <Navbar />}
+            <Routes>
+                {isMobile ? (
+                    <>
+                        <Route path="/" element={<IndexMobile />} />
+                    </>
+                ) : (
+                    <>
+                        <Route path="/" element={<Index />} />
+                        <Route path="/evenement" element={<Evenement />} />
+                        <Route path="/vote" element={<Vote />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/login" element={<Login />} />
+                    </>
+                )}
+            </Routes>
+            {!isLoginPage && <Footer />}
+        </>
+    );
 }
 
 function App() {
-	return (
-		<Router>
-			<AppContent />
-		</Router>
-	);
+    return (
+        <Router>
+            <AppContent />
+        </Router>
+    );
 }
 
 export default App;
