@@ -21,7 +21,8 @@
         .hero-content {
             width: 100%;
             height: 100%;
-            @include dflex(center, end, 0, column);
+            @include dflex(center, end, 1dvh, column);
+            padding: 2vh 0;
             z-index: 2;
             h1 {
                 font-size: 13vw;
@@ -88,10 +89,10 @@
                 width: 100%;
                 height: 100%;
                 @include dgrid(2, 1fr);
+                position: relative;
                 .card {
                     width: 100%;
                     height: 100%;
-
                     padding: 5vh 0;
                     @include dflex(center, center, 0, column);
                     h4 {
@@ -103,6 +104,19 @@
                         font-size: 3.5vw;
                         font-weight: 400;
                         color: #ffffff;
+                    }
+                }
+                hr {
+                    width: 90%;
+                    height: 1px;
+                    background-color: #ffffff;
+                    &.hr1 {
+                        @include positionTopLeft(50%, 5%, -50%, -50%);
+                        transform: rotate(90deg);
+                    }
+                    &.hr2 {
+                        // transform: rotate(90deg);
+                        @include positionTopLeft(50%, 50%, -50%, -50%);
                     }
                 }
             }
