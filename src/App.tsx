@@ -14,13 +14,14 @@ import Evenement from "./pages/evenement/evenement";
 import Vote from "./pages/vote/vote";
 import Contact from "./pages/contact/contact";
 import Login from "./pages/login/login";
+import Inscription from "./pages/inscription/inscription";
 
 // Pages Mobile
 import IndexMobile from "./pages-mobile/index/index";
 
 function AppContent() {
     const location = useLocation();
-    const isLoginPage = location.pathname === "/login";
+    const isLoginPage = location.pathname === "/login" || location.pathname === "/inscription";
     const [isMobile, setIsMobile] = useState(false);
 
     // Check if mobile
@@ -48,6 +49,7 @@ function AppContent() {
                         <Route path="/vote" element={<Vote />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/inscription" element={<Inscription />} />
                     </>
                 )}
             </Routes>
