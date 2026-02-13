@@ -111,13 +111,82 @@
                     height: 1px;
                     background-color: #ffffff;
                     &.hr1 {
-                        @include positionTopLeft(50%, 5%, -50%, -50%);
-                        transform: rotate(90deg);
+                        @include positionTopLeft(50%, 50%, -50%, -50%);
+
+                        height: 100%;
+                        width: 0;
                     }
                     &.hr2 {
                         // transform: rotate(90deg);
                         @include positionTopLeft(50%, 50%, -50%, -50%);
+                        width: 90%;
                     }
+                }
+            }
+        }
+    }
+    .vote {
+        height: 100dvh;
+        @include dflex(center, center, 2vh, column);
+        position: relative;
+        .background {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4vw;
+            z-index: 1;
+            @include positionTopLeft(50%, 50%, -50%, -50%);
+        }
+        .vote-container {
+            width: 90%;
+            height: 90%;
+            z-index: 3;
+            @include positionTopLeft(50%, 50%, -50%, -50%);
+            @include dflex(start, space-between, 2vh, column);
+            padding: 5vh 2vw;
+            border-radius: 4vw;
+            .content {
+                @include dflex(start, center, 5vh, column);
+                .content-Title {
+                    h2 {
+                        font-size: 10vw;
+                        font-weight: 600;
+                        color: #ffffff;
+                        font-family: "ClashGrotesk-Regular";
+                    }
+                    p {
+                        font-size: 5vw;
+                        font-family: "ClashGrotesk-Light";
+                        color: #ffffff;
+                    }
+                }
+                .content-text {
+                    @include dflex(center, center, 2vh, column);
+                    p {
+                        font-size: 5vw;
+                        font-family: "ClashGrotesk-Light";
+                        color: #ffffff;
+                    }
+                }
+            }
+            button {
+                border-radius: 20vw;
+                border: 1px solid #ffffff;
+                background-color: transparent;
+                cursor: pointer;
+                @include dflex(center, center, 6vw);
+                color: white;
+                font-size: 5vw;
+                font-weight: 600;
+                height: 7dvh;
+                padding: 0 2vw;
+                img {
+                    width: 10%;
+                    height: auto;
+                    object-fit: cover;
+                    filter: invert(1);
+                    transform: rotate(-45deg);
                 }
             }
         }

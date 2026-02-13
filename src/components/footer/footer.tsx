@@ -28,7 +28,7 @@ const Footer = () => {
                             t’inscrire à un tournoi.
                         </p>
                     </div>
-                    <div className="buttonContainer ">
+                    <div className="buttonContainer">
                         <button>S’inscrire maintenant</button>
                         <button>
                             <img src="./icons/arrowRight.svg" alt="" />
@@ -38,9 +38,7 @@ const Footer = () => {
             </div>
             <div className="footerMiddle">
                 <div className="contact">
-                    <h3>
-                        Nous <br /> Contacter !
-                    </h3>
+                    <h3>Nous Contacter !</h3>
                     <div className="inputContainer">
                         <input type="text" placeholder="adress@gmail.com" />
                         <button>
@@ -63,7 +61,11 @@ const Footer = () => {
             <div className="footerBottom">
                 <div className="socialLinks">
                     <p>Psst...Ici aussi</p>
-                    <img src="./icons/arrowBoucle.svg" alt="" />
+                    <img
+                        src="./icons/arrowBoucle.svg"
+                        alt=""
+                        className="arrowBoucle"
+                    />
                     <div className="socialLinksContainer">
                         {socialLinks.map((link, index) => (
                             <img key={index} src={link} alt="" />

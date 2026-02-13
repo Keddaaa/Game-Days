@@ -169,3 +169,120 @@ footer {
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    footer {
+        height: 100%;
+        background-color: #191919;
+        // padding: 6vh 2vw 0 2vw;
+        .footerTop {
+            width: 100%;
+            height: auto;
+            img {
+                display: none;
+            }
+            .textContainer {
+                width: 100%;
+                .text {
+                    h2 {
+                        font-size: 10vw;
+                    }
+                    .firstText {
+                        font-size: 6vw !important;
+                    }
+                    .secondText {
+                        font-size: 4vw !important;
+                    }
+                }
+            }
+            .buttonContainer {
+                @include dflex(center, center, 0);
+                button {
+                    &:first-child {
+                        width: 50vw;
+                        height: 7vh;
+                        font-size: 4vw;
+                    }
+                    &:last-child {
+                        width: 7vh;
+                        height: 7vh;
+
+                        img {
+                            width: 70%;
+                            filter: invert(1);
+                            height: auto;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+        .footerMiddle {
+            width: 100%;
+            height: auto;
+            padding: 0;
+            .contact {
+                width: 100%;
+                padding: 2vh 5vw;
+                h3 {
+                    font-size: 6vw;
+                }
+                .inputContainer {
+                    width: 100%;
+                    input {
+                        width: 100%;
+                        &::placeholder {
+                            font-size: 5vw;
+                        }
+                    }
+                    button {
+                        width: auto;
+                        height: 100%;
+                        img {
+                            width: 5vw;
+                            height: auto;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+            .map {
+                display: none;
+            }
+        }
+        .footerBottom {
+            @include dflex(center, center, 2dvh, column);
+            .socialLinks {
+                width: 100%;
+                height: auto;
+                border: 1px solid white;
+                padding: 2vh 2vw;
+                border-radius: 5vw;
+                p {
+                    font-size: 5vw;
+                    color: white;
+                }
+                .socialLinksContainer {
+                    img {
+                        width: 10vw;
+                        height: auto;
+                        object-fit: cover;
+                    }
+                }
+                .arrowBoucle {
+                    width: 15vw;
+                    height: auto;
+                    object-fit: cover;
+                    filter: brightness(0) invert(1);
+                }
+            }
+            .copyright {
+                width: 100%;
+                height: auto;
+                margin: 0;
+                color: white;
+                font-size: 4vw;
+            }
+        }
+    }
+}

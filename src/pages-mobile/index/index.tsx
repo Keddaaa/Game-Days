@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 const Index = () => {
     // compte a rebours a partir d'une date precise
-    // 23 mars 2026 16h
-    const date = new Date("2026-03-23T16:00:00");
+    // 13 mars 2026 16h
+    const date = new Date("2026-03-13T09:00:00");
     const [days, setDays] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
@@ -68,6 +68,44 @@ const Index = () => {
                         <hr className="hr2" />
                     </div>
                 </div>
+            </section>
+            <section className="vote">
+                <img
+                    src="./img/valorant.gif"
+                    alt="valorant"
+                    className="background"
+                />
+                <article className="vote-container">
+                    <div className="content">
+                        <div className="content-Title">
+                            <h2>Vote pour tes jeux favoris !</h2>
+                            <p>
+                                Choisis les jeux que tu veux voir sur les
+                                stands, dans les tournois ou en réalité
+                                virtuelle.
+                            </p>
+                        </div>
+                        <div className="content-text">
+                            <p>
+                                Les participants choisiront les jeux qui seront
+                                présents lors de la Journée du Jeu Vidéo.
+                            </p>
+                            <p>
+                                Ton vote permettra de décider des tournois
+                                officiels, des jeux multijoueurs canapé et des
+                                jeux VR proposés sur place.
+                            </p>
+                        </div>
+                    </div>
+                    <button>
+                        Voter maintenant
+                        <img
+                            src="./icons/arrow.svg"
+                            alt="arrow Right"
+                            className="arrow"
+                        />
+                    </button>
+                </article>
             </section>
         </div>
     );
