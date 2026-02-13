@@ -1,386 +1,388 @@
 @use "../../styles/mixins.scss" as *;
 
 .index {
-    width: 100%;
-    height: 100%;
-    @include dflex(center, end, 1vw, column);
-    background-color: #fff5e4;
+	width: 100%;
+	height: 100%;
+	@include dflex(center, end, 1vw, column);
+	background-color: #fff5e4;
 
-    .hero {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
+	.hero {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
 
-        .backgroundIMG {
-            margin: auto;
-            padding: 1vw;
-            width: 100%;
-            height: 100%;
-            border-radius: 2vw;
-            @include positionTopLeft(50%, 50%, -50%, -50%);
-            z-index: 1;
-        }
+		.backgroundIMG {
+			margin: auto;
+			padding: 1vw;
+			width: 100%;
+			height: 100%;
+			border-radius: 2vw;
+			@include positionTopLeft(50%, 50%, -50%, -50%);
+			z-index: 1;
+		}
 
-        .hero-content {
-            @include dflex(start, start, 0, column);
+		.hero-content {
+			@include dflex(start, start, 0, column);
 
-            @include positionBottomLeft(3%, 3%);
-            color: white;
-            z-index: 2;
-            h1 {
-                font-family: "ClashGrotesk-Bold", sans-serif;
-                font-size: 7vw;
-                margin-bottom: 1vh;
-            }
+			@include positionBottomLeft(3%, 3%);
+			color: white;
+			z-index: 2;
+			h1 {
+				font-family: "ClashGrotesk-Bold", sans-serif;
+				font-size: 7vw;
+				margin-bottom: 1vh;
+			}
 
-            p {
-                font-family: "ClashGrotesk-Medium", sans-serif;
-                font-size: 1.7vw;
-                margin-bottom: 2vh;
-            }
-        }
-        .voirplus {
-            @include positionRightBottom(2.5%, 5%);
-            z-index: 2;
-            width: 3.5vw;
-            height: 3.5vw;
-            border-radius: 50%;
+			p {
+				font-family: "ClashGrotesk-Medium", sans-serif;
+				font-size: 1.7vw;
+				margin-bottom: 2vh;
+			}
+		}
+		.voirplus {
+			@include positionRightBottom(2.5%, 5%);
+			z-index: 2;
+			width: 3.5vw;
+			height: 3.5vw;
+			border-radius: 50%;
 
-            border: none;
-            background-color: white;
-            span {
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                background-color: rgb(255, 255, 255);
-                @include dflex(center, center, 0, column);
-                img {
-                    width: 70%;
-                    height: auto;
-                    object-fit: cover;
-                }
-            }
+			border: none;
+			background-color: white;
+			span {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background-color: rgb(255, 255, 255);
+				@include dflex(center, center, 0, column);
+				img {
+					width: 70%;
+					height: auto;
+					object-fit: cover;
+				}
+			}
 
-            ::before {
-                content: "";
-                z-index: -1;
-                @include positionTopLeft(55%, 50%, -50%, -50%);
-                width: 115%;
-                height: 115%;
-                border-radius: 50%;
-                background-color: rgb(0, 0, 0);
-            }
-        }
-    }
+			::before {
+				content: "";
+				z-index: -1;
+				@include positionTopLeft(55%, 50%, -50%, -50%);
+				width: 115%;
+				height: 115%;
+				border-radius: 50%;
+				background-color: rgb(0, 0, 0);
+			}
+		}
+	}
 
-    .presentation {
-        width: 100%;
-        height: 100vh;
-        @include dflex(center, start, 0, column);
+	.presentation {
+		width: 100%;
+		height: 100vh;
+		@include dflex(center, start, 0, column);
 
-        .defilement {
-            width: 100%;
-            @include dflex(start, start);
-            padding: 0.7vh 0;
+		.defilement {
+			width: 100%;
+			@include dflex(start, start);
+			padding: 0.7vh 0;
 
-            overflow-x: auto;
-            background-color: rgba(255, 193, 100, 1);
-            border-top: 0.2vw solid black;
-            border-bottom: 0.2vw solid black;
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            .defilement-content {
-                @include dflex(center, center);
-                animation: defilement 10s linear infinite;
-                p {
-                    font-family: "ClashGrotesk-Medium", sans-serif;
-                    font-size: 1.4vw;
-                    padding-right: 1.2vw;
-                    white-space: nowrap;
-                }
-            }
-            @keyframes defilement {
-                from {
-                    transform: translateX(0);
-                }
-                to {
-                    transform: translateX(-100%);
-                }
-            }
-        }
-        .presentation-content {
-            @include dflex(center, center, 6vh, column);
-            // padding: 0 2vw;
-            width: 100%;
-            height: 100%;
+			overflow-x: auto;
+			background-color: rgba(255, 193, 100, 1);
+			border-top: 0.2vw solid black;
+			border-bottom: 0.2vw solid black;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			.defilement-content {
+				@include dflex(center, center);
+				animation: defilement 10s linear infinite;
+				p {
+					font-family: "ClashGrotesk-Medium", sans-serif;
+					font-size: 1.4vw;
+					padding-right: 1.2vw;
+					white-space: nowrap;
+				}
+			}
+			@keyframes defilement {
+				from {
+					transform: translateX(0);
+				}
+				to {
+					transform: translateX(-100%);
+				}
+			}
+		}
+		.presentation-content {
+			@include dflex(center, center, 6vh, column);
+			// padding: 0 2vw;
+			width: 100%;
+			height: 100%;
 
-            .text1 {
-                font-family: "ClashGrotesk-Bold", sans-serif;
-                font-size: 5vw;
-                padding-right: 1.2vw;
-                white-space: nowrap;
-                text-align: center;
-                position: relative;
-                div {
-                    padding: 1vh 0.2vw;
-                    position: relative;
-                    border-radius: 25vw;
-                    span {
-                        padding: 1vh 2vw;
-                        border-radius: 25vw;
-                        position: relative;
-                        // font-size: 3vw;
-                        border: 0.2vw solid black;
-                        z-index: 1;
-                    }
-                    &::after {
-                        content: "";
-                        border-radius: 25vw;
-                        @include positionTopLeft(55%, 50%, -50%, -50%);
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgb(0, 0, 0);
-                        z-index: -1;
-                    }
-                }
-                .meaux {
-                    @include positionTopLeft(1%, 98%, -50%, -50%);
-                    font-size: 3vw;
+			.text1 {
+				font-family: "ClashGrotesk-Bold", sans-serif;
+				font-size: 5vw;
+				padding-right: 1.2vw;
+				white-space: nowrap;
+				text-align: center;
+				position: relative;
+				div {
+					padding: 1vh 0.2vw;
+					position: relative;
+					border-radius: 25vw;
+					span {
+						padding: 1vh 2vw;
+						border-radius: 25vw;
+						position: relative;
+						// font-size: 3vw;
+						border: 0.2vw solid black;
+						z-index: 1;
+					}
+					&::after {
+						content: "";
+						border-radius: 25vw;
+						@include positionTopLeft(55%, 50%, -50%, -50%);
+						width: 100%;
+						height: 100%;
+						background-color: rgb(0, 0, 0);
+						z-index: -1;
+					}
+				}
+				.meaux {
+					@include positionTopLeft(1%, 98%, -50%, -50%);
+					font-size: 3vw;
 
-                    span {
-                        background-color: rgba(255, 112, 112, 1);
-                    }
-                }
-                .decouverte {
-                    @include positionTopLeft(17%, 27%, -50%, -50%);
-                    transform: rotate(-7deg);
-                    font-size: 2.5vw;
-                    &::after {
-                        @include positionTopLeft(58%, 50%, -50%, -50%);
-                    }
-                    span {
-                        background-color: rgba(212, 94, 195, 1);
-                    }
-                }
+					span {
+						background-color: rgba(255, 112, 112, 1);
+					}
+				}
+				.decouverte {
+					@include positionTopLeft(17%, 27%, -50%, -50%);
+					transform: rotate(-7deg);
+					font-size: 2.5vw;
+					&::after {
+						@include positionTopLeft(58%, 50%, -50%, -50%);
+					}
+					span {
+						background-color: rgba(212, 94, 195, 1);
+					}
+				}
 
-                .cashprize {
-                    @include positionTopLeft(47%, 80%, -50%, -50%);
-                    font-size: 2vw;
-                    &::after {
-                        @include positionTopLeft(60%, 50%, -50%, -50%);
-                    }
-                    span {
-                        background-color: rgba(255, 193, 100, 1);
-                    }
-                }
-                .tournois {
-                    @include positionTopLeft(47%, -1%, -50%, -50%);
-                    transform: rotate(-7deg);
-                    font-size: 2vw;
-                    &::after {
-                        @include positionTopLeft(60%, 50%, -50%, -50%);
-                    }
-                    span {
-                        background-color: rgba(249, 178, 127, 1);
-                    }
-                }
-                .gamedays {
-                    @include positionTopLeft(90%, 54%, -50%, -50%);
-                    transform: rotate(-7deg);
-                    font-size: 2vw;
-                    &::after {
-                        @include positionTopLeft(60%, 50%, -50%, -50%);
-                    }
-                    span {
-                        background-color: rgba(117, 151, 202, 1);
-                    }
-                }
-            }
-            .text2 {
-                font-family: "ClashGrotesk-Bold", sans-serif;
-                font-size: 2vw;
-                padding-right: 1.2vw;
-                white-space: nowrap;
-                text-align: center;
-            }
-        }
-    }
+				.cashprize {
+					@include positionTopLeft(47%, 80%, -50%, -50%);
+					font-size: 2vw;
+					&::after {
+						@include positionTopLeft(60%, 50%, -50%, -50%);
+					}
+					span {
+						background-color: rgba(255, 193, 100, 1);
+					}
+				}
+				.tournois {
+					@include positionTopLeft(47%, -1%, -50%, -50%);
+					transform: rotate(-7deg);
+					font-size: 2vw;
+					&::after {
+						@include positionTopLeft(60%, 50%, -50%, -50%);
+					}
+					span {
+						background-color: rgba(249, 178, 127, 1);
+					}
+				}
+				.gamedays {
+					@include positionTopLeft(90%, 54%, -50%, -50%);
+					transform: rotate(-7deg);
+					font-size: 2vw;
+					&::after {
+						@include positionTopLeft(60%, 50%, -50%, -50%);
+					}
+					span {
+						background-color: rgba(117, 151, 202, 1);
+					}
+				}
+			}
+			.text2 {
+				font-family: "ClashGrotesk-Bold", sans-serif;
+				font-size: 2vw;
+				padding-right: 1.2vw;
+				white-space: nowrap;
+				text-align: center;
+			}
+		}
+	}
 
-    .carroussel {
-        width: 100%;
-        height: 100vh;
-        @include dflex(center, center);
-        padding: 2vw;
-        article {
-            width: 100%;
-            height: 100%;
-            @include dflex(center, center, 4vw);
-            background-color: rgba(0, 20, 28, 1);
-            border-radius: 2vw;
-            color: white;
-            padding: 2vw;
-            div {
-                width: 50%;
-                height: 100%;
-                padding: 2vw 0 0 2vw;
-                @include dflex(start, space-between, 0, column);
-                h2 {
-                    font-family: "ClashGrotesk-Bold", sans-serif;
-                    font-size: 5vw;
-                }
-                p {
-                    font-family: "ClashGrotesk-Medium", sans-serif;
-                    font-size: 1.4vw;
-                }
-                .buttons {
-                    @include dflex(end, end, 1vw);
-                    width: 100%;
-                    padding: 0;
-                    height: auto;
-                    button {
-                        width: 3vw;
-                        height: 3vw;
-                        border-radius: 50%;
-                        border: none;
-                        background-color: rgba(255, 255, 255, 0.644);
-                        cursor: pointer;
-                        @include dflex(center, center);
-                        img {
-                            width: 50%;
-                            height: auto;
-                            object-fit: cover;
-                        }
-                        &:nth-child(1) {
-                            transform: rotate(135deg);
-                        }
-                        &:nth-child(2) {
-                            transform: rotate(-45deg);
-                        }
-                        &.active {
-                            background-color: rgb(255, 255, 255);
-                        }
-                    }
-                }
-            }
-            img {
-                width: 50%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 2vw;
-            }
-        }
-    }
-    .jeux {
-        @include dflex(center, space-between);
-        width: 100%;
-        height: 100vh;
-        padding: 0 2vw;
-        overflow: hidden;
-        .info {
-            width: 50%;
-            height: 100%;
-            @include dflex(start, center, 10vh, column);
-            padding: 5vh 1vw;
-            .title {
-                width: 100%;
-                height: auto;
+	.carroussel {
+		width: 100%;
+		height: 100vh;
+		@include dflex(center, center);
+		padding: 2vw;
+		article {
+			width: 100%;
+			height: 110%;
+			@include dflex(center, center, 4vw);
+			background-color: rgba(0, 20, 28, 1);
+			border-radius: 2vw;
+			color: white;
+			padding: 2vw;
+			div {
+				width: 50%;
+				height: 100%;
+				padding: 2vw 0 0 2vw;
+				@include dflex(start, space-between, 0, column);
+				h2 {
+					font-family: "ClashGrotesk-Bold", sans-serif;
+					font-size: 5vw;
+				}
+				p {
+					font-family: "ClashGrotesk-Medium", sans-serif;
+					font-size: 1.4vw;
+				}
+				.buttons {
+					@include dflex(end, end, 1vw);
+					width: 100%;
+					padding-bottom: 1vh;
+					height: auto;
+					button {
+						width: 3.5vw;
+						height: 3.5vw;
+						border-radius: 50%;
+						border: none;
+						background-color: rgba(255, 255, 255, 0.6);
+						cursor: pointer;
+						@include dflex(center, center);
+						img {
+							width: 50%;
+							height: auto;
+							object-fit: cover;
+						}
+						&:nth-child(1) {
+							transform: rotate(135deg);
+						}
+						&:nth-child(2) {
+							transform: rotate(-45deg);
+						}
+						&.active {
+							background-color: rgb(255, 255, 255);
+						}
+					}
+				}
+			}
+			img {
+				width: 50%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+				border-radius: 2vw;
+				flex-shrink: 0;
+			}
+		}
+	}
+	.jeux {
+		@include dflex(center, space-between);
+		width: 100%;
+		height: 100vh;
+		padding: 0 2vw;
+		overflow: hidden;
+		.info {
+			width: 50%;
+			height: 100%;
+			@include dflex(start, center, 10vh, column);
+			padding: 5vh 1vw;
+			.title {
+				width: 100%;
+				height: auto;
 
-                h2 {
-                    font-family: "ClashGrotesk-Bold", sans-serif;
-                    font-size: 4vw;
-                }
-                p {
-                    font-family: "ClashGrotesk-Medium", sans-serif;
-                    font-size: 1.4vw;
-                }
-            }
-            & > p {
-                font-family: "ClashGrotesk-Medium", sans-serif;
-                font-size: 1.7vw;
-            }
-            .voir {
-                @include dflex(center, center, 1vw);
-                padding: 1vh 1.5vw;
-                border-radius: 25vw;
-                span {
-                    font-family: "ClashGrotesk-Medium", sans-serif;
-                    font-size: 1.1vw;
-                    white-space: nowrap;
-                }
-                border: none;
-                background-color: rgb(0, 0, 0);
-                color: white;
-                cursor: pointer;
-                img {
-                    width: 15%;
-                    height: auto;
-                    object-fit: cover;
-                }
-            }
-        }
-        .doubleCaroussel {
-            width: 50%;
-            height: 100%;
-            @include dflex(center, center, 2vw);
-            color: white;
-            padding: 2vw;
+				h2 {
+					font-family: "ClashGrotesk-Bold", sans-serif;
+					font-size: 4vw;
+				}
+				p {
+					font-family: "ClashGrotesk-Medium", sans-serif;
+					font-size: 1.4vw;
+				}
+			}
+			& > p {
+				font-family: "ClashGrotesk-Medium", sans-serif;
+				font-size: 1.7vw;
+			}
+			.voir {
+				@include dflex(center, center, 1vw);
+				padding: 1vh 1.5vw;
+				border-radius: 25vw;
+				span {
+					font-family: "ClashGrotesk-Medium", sans-serif;
+					font-size: 1.1vw;
+					white-space: nowrap;
+				}
+				border: none;
+				background-color: rgb(0, 0, 0);
+				color: white;
+				cursor: pointer;
+				img {
+					width: 15%;
+					height: auto;
+					object-fit: cover;
+				}
+			}
+		}
+		.doubleCaroussel {
+			width: 50%;
+			height: 100%;
+			@include dflex(center, center, 2vw);
+			color: white;
+			padding: 2vw;
 
-            .caroussel {
-                width: 50%;
-                height: 100%;
-                position: relative;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                gap: 2vw;
+			.caroussel {
+				width: 50%;
+				height: 100%;
+				position: relative;
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				gap: 2vw;
 
-                .scroll {
-                    flex-shrink: 0;
-                    width: 100%;
-                    height: max-content;
+				.scroll {
+					flex-shrink: 0;
+					width: 100%;
+					height: max-content;
 
-                    @include dflex(start, center, 2vw, column);
-                    &.scroll1 {
-                        animation: scrollUp 15s linear infinite;
-                    }
+					@include dflex(start, center, 2vw, column);
+					&.scroll1 {
+						animation: scrollUp 15s linear infinite;
+					}
 
-                    &.scroll2 {
-                        animation: scrollDown 15s linear infinite;
-                    }
+					&.scroll2 {
+						animation: scrollDown 15s linear infinite;
+					}
 
-                    img {
-                        width: 100%;
-                        height: auto;
-                        object-fit: cover;
-                        border-radius: 1vw;
-                        flex-shrink: 0;
-                    }
-                }
-            }
-        }
+					img {
+						width: 100%;
+						height: auto;
+						object-fit: cover;
+						border-radius: 1vw;
+						flex-shrink: 0;
+					}
+				}
+			}
+		}
 
-        // ─────────────────────────────────
-        // ANIMATIONS
-        // ─────────────────────────────────
+		// ─────────────────────────────────
+		// ANIMATIONS
+		// ─────────────────────────────────
 
-        @keyframes scrollUp {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(calc(-100% - 2vw));
-            }
-        }
+		@keyframes scrollUp {
+			0% {
+				transform: translateY(0);
+			}
+			100% {
+				transform: translateY(calc(-100% - 2vw));
+			}
+		}
 
-        @keyframes scrollDown {
-            0% {
-                transform: translateY(calc(-100% - 2vw));
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-    }
+		@keyframes scrollDown {
+			0% {
+				transform: translateY(calc(-100% - 2vw));
+			}
+			100% {
+				transform: translateY(0);
+			}
+		}
+	}
 }
