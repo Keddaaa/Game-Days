@@ -3,7 +3,7 @@ import "./index.scss";
 const Index = () => {
     const defilement = [
         "MMI Game Days",
-        "Le 17/03/2026",
+        "Le 13/03/2026",
         "A meaux",
         "Ready to play?",
         "#GameDays",
