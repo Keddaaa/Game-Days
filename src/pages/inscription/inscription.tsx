@@ -73,9 +73,9 @@ const Inscription = () => {
                                 <option value="" disabled>
                                     Formation
                                 </option>
-                                <option value="mmi1">MMI 1ère année</option>
-                                <option value="mmi2">MMI 2ème année</option>
-                                <option value="mmi3">MMI 3ème année</option>
+                                <option value="mmi">MMI</option>
+                                <option value="gea">GEA</option>
+                                <option value="tc">TC</option>
                                 <option value="autre">Autre formation</option>
                             </select>
                         </div>
@@ -135,7 +135,7 @@ const Inscription = () => {
                 </div>
 
                 <div className="image-section">
-                    <img src="./img/inscription.png" alt="Gaming" />
+                    <img src="/img/inscription.png" alt="Gaming" />
                 </div>
             </div>
         </div>

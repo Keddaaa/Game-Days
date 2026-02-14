@@ -2,15 +2,15 @@ import "./footer.scss";
 
 const Footer = () => {
     const socialLinks = [
-        "./reseaux/image33.png",
-        "./reseaux/image34.png",
-        "./reseaux/image36.png",
+        "/reseaux/image33.png",
+        "/reseaux/image34.png",
+        "/reseaux/image36.png",
     ];
 
     return (
         <footer>
             <div className="footerTop">
-                <img src="./img/footer.gif" alt="" />
+                <img src="/img/footer.gif" alt="" />
                 <div className="textContainer">
                     <div className="text">
                         <h2>
@@ -31,18 +31,18 @@ const Footer = () => {
                     <div className="buttonContainer">
                         <button>S’inscrire maintenant</button>
                         <button>
-                            <img src="./icons/arrowRight.svg" alt="" />
+                            <img src="/icons/arrowRight.svg" alt="" />
                         </button>
                     </div>
                 </div>
             </div>
-            <div className="footerMiddle">
+            <div className="footerMiddle" id="contact">
                 <div className="contact">
                     <h3>Nous Contacter !</h3>
                     <div className="inputContainer">
                         <input type="text" placeholder="adress@gmail.com" />
                         <button>
-                            <img src="./icons/send.svg" alt="" />
+                            <img src="/icons/send.svg" alt="" />
                         </button>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ const Footer = () => {
                 <div className="socialLinks">
                     <p>Psst...Ici aussi</p>
                     <img
-                        src="./icons/arrowBoucle.svg"
+                        src="/icons/arrowBoucle.svg"
                         alt=""
                         className="arrowBoucle"
                     />

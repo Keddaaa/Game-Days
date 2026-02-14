@@ -6,12 +6,18 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "ClashGrotesk-Variable", sans-serif;
+
     &::-webkit-scrollbar {
         display: none;
     }
 }
+
 h1 {
     font-family: "ClashGrotesk-Bold", sans-serif;
 }

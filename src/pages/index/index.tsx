@@ -27,7 +27,7 @@ const Index = () => {
 					moment fort au sein de la vie étudiante.
 				</>
 			),
-			image: "./img/dequoi.png",
+			image: "/img/dequoi.png",
 		},
 		{
 			title: "Objectifs de la journée",
@@ -55,7 +55,7 @@ const Index = () => {
 					chacun peut partager sa passion du jeu.
 				</>
 			),
-			image: "./img/foule.png",
+			image: "/img/foule.png",
 		},
 		{
 			title: "Déroulement de la journée",
@@ -81,7 +81,7 @@ const Index = () => {
 					trophées et clôture de l’événement.
 				</>
 			),
-			image: "./img/image37.png",
+			image: "/img/image37.png",
 		},
 		{
 			title: "Tournois de fin de journée",
@@ -99,7 +99,7 @@ const Index = () => {
 					talents !
 				</div>
 			),
-			image: "./img/cup.png",
+			image: "/img/cup.png",
 		},
 		{
 			title: "Snack",
@@ -119,7 +119,7 @@ const Index = () => {
 					journée.
 				</>
 			),
-			image: "./img/food.png",
+			image: "/img/food.png",
 		},
 	];
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -141,23 +141,23 @@ const Index = () => {
 	];
 	const imgListCaroussel = [
 		[
-			"./img/jeux/deluxe.png",
-			"./img/jeux/2K.png",
-			"./img/jeux/storm.png",
-			"./img/jeux/fighterZ.png",
+			"/img/jeux/deluxe.png",
+			"/img/jeux/2K.png",
+			"/img/jeux/storm.png",
+			"/img/jeux/fighterZ.png",
 		],
 		[
-			"./img/jeux/party.png",
-			"./img/jeux/brawlhalla.png",
-			"./img/jeux/fc.png",
-			"./img/jeux/saber.png",
+			"/img/jeux/party.png",
+			"/img/jeux/brawlhalla.png",
+			"/img/jeux/fc.png",
+			"/img/jeux/saber.png",
 		],
 	];
 	return (
 		<div className="index">
-			<section className="hero">
+			<section className="hero" id="accueil">
 				<img
-					src="../../img/valorant.gif"
+					src="/img/valorant.gif"
 					alt="Fond d'écran Valorant"
 					className="backgroundIMG"
 				/>
@@ -167,7 +167,7 @@ const Index = () => {
 				</div>
 				<button className="voirplus">
 					<span>
-						<img src="./icons/arrow.svg" alt="Voir plus" />
+						<img src="/icons/arrow.svg" alt="Voir plus" />
 					</span>
 				</button>
 			</section>
@@ -226,7 +226,7 @@ const Index = () => {
 					</p>
 				</div>
 			</section>
-			<section className="carroussel">
+			<section className="carroussel" id="evenement">
 				<article>
 					<div>
 						{/* On affiche le titre et le texte de la planche actuelle */}
@@ -235,10 +235,10 @@ const Index = () => {
 
 						<div className="buttons">
 							<button onClick={prevSlide}>
-								<img src="./icons/arrow.svg" alt="Précédent" />
+								<img src="/icons/arrow.svg" alt="Précédent" />
 							</button>
 							<button className="active" onClick={nextSlide}>
-								<img src="./icons/arrow.svg" alt="Suivant" />
+								<img src="/icons/arrow.svg" alt="Suivant" />
 							</button>
 						</div>
 					</div>
@@ -247,7 +247,7 @@ const Index = () => {
 				</article>
 			</section>
 
-			<section className="jeux">
+			<section className="jeux" id="vote">
 				<div className="info">
 					<div className="title">
 						<h2>
@@ -269,7 +269,7 @@ const Index = () => {
 					</p>
 					<button className="voir">
 						<span>Voter maintenant</span>
-						<img src="./icons/arrowRight.svg" alt="" />
+						<img src="/icons/arrowRight.svg" alt="" />
 					</button>
 				</div>
 

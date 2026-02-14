@@ -10,9 +10,6 @@ import Footer from "./components/footer/footer";
 
 // Pages Desktop
 import Index from "./pages/index/index";
-import Evenement from "./pages/evenement/evenement";
-import Vote from "./pages/vote/vote";
-import Contact from "./pages/contact/contact";
 import Login from "./pages/login/login";
 import Inscription from "./pages/inscription/inscription";
 
@@ -45,9 +42,6 @@ function AppContent() {
                 ) : (
                     <>
                         <Route path="/" element={<Index />} />
-                        <Route path="/evenement" element={<Evenement />} />
-                        <Route path="/vote" element={<Vote />} />
-                        <Route path="/contact" element={<Contact />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/inscription" element={<Inscription />} />
                     </>

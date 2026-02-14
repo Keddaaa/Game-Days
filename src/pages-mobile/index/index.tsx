@@ -32,14 +32,14 @@ const Index = () => {
     return (
         <div className="indexMobile">
             <section className="hero">
-                <img src="./img/mobileHero.gif" alt="" className="hero-img" />
+                <img src="/img/mobileHero.gif" alt="" className="hero-img" />
                 <div className="hero-content">
                     <h1>Game Days</h1>
                     <p>La première édition gaming de l’IUT de Meaux</p>
                     <button>
                         <span>S’inscrire maintenant</span>
                         <span>
-                            <img src="./icons/arrow.svg" alt="" />
+                            <img src="/icons/arrow.svg" alt="" />
                         </span>
                     </button>
                 </div>
@@ -71,7 +71,7 @@ const Index = () => {
             </section>
             <section className="vote">
                 <img
-                    src="./img/valorant.gif"
+                    src="/img/valorant.gif"
                     alt="valorant"
                     className="background"
                 />
@@ -100,7 +100,7 @@ const Index = () => {
                     <button>
                         Voter maintenant
                         <img
-                            src="./icons/arrow.svg"
+                            src="/icons/arrow.svg"
                             alt="arrow Right"
                             className="arrow"
                         />

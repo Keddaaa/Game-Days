@@ -57,7 +57,7 @@ const Login = () => {
 								className="toggle-password"
 								onClick={() => setShowPassword(!showPassword)}
 							>
-								{showPassword ? "Cacher" : "Cacher"}
+								{showPassword ? "Masquer" : "Afficher"}
 							</button>
 						</div>
 
@@ -80,7 +80,7 @@ const Login = () => {
 				</div>
 
 				<div className="image-section">
-					<img src="./img/connexion.png" alt="Gaming" />
+					<img src="/img/connexion.png" alt="Gaming" />
 				</div>
 			</div>
 		</div>
