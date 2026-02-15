@@ -1,15 +1,41 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [identifiant, setIdentifiant] = useState("");
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
+	const [error, setError] = useState("");
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		console.log("Connexion avec:", { identifiant, password });
+		setError("");
+
+		try {
+			const response = await fetch("http://localhost/api/login.php", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					identifiant: identifiant,
+					mot_de_passe: password,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (data.success) {
+				localStorage.setItem("user", JSON.stringify(data.user));
+				window.location.href = "/";
+			} else {
+				setError(data.error);
+			}
+		} catch (err) {
+			setError("Erreur serveur");
+		}
 	};
 
 	return (

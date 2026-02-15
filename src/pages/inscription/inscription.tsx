@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./inscription.scss";
 
 const Inscription = () => {
+	const navigate = useNavigate();
 	const [nomPrenom, setNomPrenom] = useState("");
 	const [identifiant, setIdentifiant] = useState("");
 	const [formation, setFormation] = useState("");
@@ -10,16 +11,47 @@ const Inscription = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		console.log("Inscription avec:", {
-			nomPrenom,
-			identifiant,
-			formation,
-			password,
-			confirmPassword,
-		});
+
+		setError("");
+		setSuccess("");
+
+		if (password !== confirmPassword) {
+			setError("Les mots de passe ne correspondent pas");
+			return;
+		}
+
+		try {
+			const response = await fetch("http://localhost/api/register.php", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					nom_prenom: nomPrenom,
+					identifiant: identifiant,
+					formation: formation,
+					mot_de_passe: password,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (data.success) {
+				setSuccess("Inscription réussie");
+				setTimeout(() => {
+					navigate("/login");
+				}, 1000);
+			} else {
+				setError(data.error || "Erreur");
+			}
+		} catch (error) {
+			setError("Erreur serveur");
+		}
 	};
 
 	return (
