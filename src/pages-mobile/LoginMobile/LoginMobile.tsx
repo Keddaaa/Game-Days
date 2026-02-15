@@ -9,12 +9,12 @@ export const LoginMobile = () => {
 
     // const for inscription
     const [nom, setNom] = useState("");
-    const [prenom, setPrenom] = useState("");
     const [identifiant, setIdentifiant] = useState("");
     const [formation, setFormation] = useState("");
     const [mdp, setMdp] = useState("");
     const [mdpConfirm, setMdpConfirm] = useState("");
     const [page, setPage] = useState(1);
+
     return (
         <div className="login-mobile">
             <div className="loginContainer">
@@ -59,12 +59,25 @@ export const LoginMobile = () => {
                                     <input
                                         type="text"
                                         placeholder="Nom/Prénom"
+                                        value={nom}
+                                        onChange={(e) => setNom(e.target.value)}
                                     />
                                     <input
                                         type="text"
                                         placeholder="Identifiant"
+                                        value={identifiant}
+                                        onChange={(e) =>
+                                            setIdentifiant(e.target.value)
+                                        }
                                     />
-                                    <select name="formation" id="formation">
+                                    <select
+                                        name="formation"
+                                        id="formation"
+                                        value={formation}
+                                        onChange={(e) =>
+                                            setFormation(e.target.value)
+                                        }
+                                    >
                                         <option value="_">Formation</option>
                                         <option value="MMI">MMI</option>
                                         <option value="GEA">GEA</option>
@@ -80,10 +93,16 @@ export const LoginMobile = () => {
                                     <input
                                         type="text"
                                         placeholder="Mot de pase"
+                                        value={mdp}
+                                        onChange={(e) => setMdp(e.target.value)}
                                     />
                                     <input
                                         type="text"
                                         placeholder="Confirmer le mot de pase"
+                                        value={mdpConfirm}
+                                        onChange={(e) =>
+                                            setMdpConfirm(e.target.value)
+                                        }
                                     />
                                 </div>
                                 <button
@@ -113,10 +132,16 @@ export const LoginMobile = () => {
                                     <input
                                         type="text"
                                         placeholder="Identifiant"
+                                        value={identifiant}
+                                        onChange={(e) =>
+                                            setIdentifiant(e.target.value)
+                                        }
                                     />
                                     <input
                                         type="text"
                                         placeholder="Mot de pase"
+                                        value={mdp}
+                                        onChange={(e) => setMdp(e.target.value)}
                                     />
                                 </div>
                                 <button>Se connecter</button>
