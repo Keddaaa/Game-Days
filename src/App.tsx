@@ -15,10 +15,12 @@ import Inscription from "./pages/inscription/inscription";
 
 // Pages Mobile
 import IndexMobile from "./pages-mobile/index/index";
+import { LoginMobile } from "./pages-mobile/LoginMobile/LoginMobile";
 
 function AppContent() {
     const location = useLocation();
-    const isLoginPage = location.pathname === "/login" || location.pathname === "/inscription";
+    const isLoginPage =
+        location.pathname === "/login" || location.pathname === "/inscription";
     const [isMobile, setIsMobile] = useState(false);
 
     // Check if mobile
@@ -38,6 +40,7 @@ function AppContent() {
                 {isMobile ? (
                     <>
                         <Route path="/" element={<IndexMobile />} />
+                        <Route path="/login" element={<LoginMobile />} />
                     </>
                 ) : (
                     <>

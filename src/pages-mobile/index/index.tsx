@@ -1,9 +1,11 @@
 import "./index.scss";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
     // compte a rebours a partir d'une date precise
     // 13 mars 2026 16h
+    const navigate = useNavigate();
     const date = new Date("2026-03-13T09:00:00");
     const [days, setDays] = useState(0);
     const [hours, setHours] = useState(0);
@@ -29,6 +31,10 @@ const Index = () => {
         return () => clearInterval(interval);
     }, []);
 
+    const hangleNavigate = (link: string, state?: string) => {
+        navigate(link, { state });
+    };
+
     return (
         <div className="indexMobile">
             <section className="hero">
@@ -36,7 +42,9 @@ const Index = () => {
                 <div className="hero-content">
                     <h1>Game Days</h1>
                     <p>La première édition gaming de l’IUT de Meaux</p>
-                    <button>
+                    <button
+                        onClick={() => hangleNavigate("/login", "inscription")}
+                    >
                         <span>S’inscrire maintenant</span>
                         <span>
                             <img src="/icons/arrow.svg" alt="" />
