@@ -14,16 +14,19 @@ const Login = () => {
 		setError("");
 
 		try {
-			const response = await fetch("http://localhost/api/login.php", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
+			const response = await fetch(
+				"https://gameday.alwaysdata.net/login.php",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						identifiant: identifiant,
+						mot_de_passe: password,
+					}),
 				},
-				body: JSON.stringify({
-					identifiant: identifiant,
-					mot_de_passe: password,
-				}),
-			});
+			);
 
 			const data = await response.json();
 

@@ -16,9 +16,7 @@ const Inscription = () => {
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-
 		setError("");
-		setSuccess("");
 
 		if (password !== confirmPassword) {
 			setError("Les mots de passe ne correspondent pas");
@@ -26,28 +24,28 @@ const Inscription = () => {
 		}
 
 		try {
-			const response = await fetch("http://localhost/api/register.php", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
+			const response = await fetch(
+				"https://gameday.alwaysdata.net/register.php",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						nom_prenom: nomPrenom,
+						identifiant: identifiant,
+						formation: formation,
+						mot_de_passe: password,
+					}),
 				},
-				body: JSON.stringify({
-					nom_prenom: nomPrenom,
-					identifiant: identifiant,
-					formation: formation,
-					mot_de_passe: password,
-				}),
-			});
+			);
 
 			const data = await response.json();
 
 			if (data.success) {
-				setSuccess("Inscription réussie");
-				setTimeout(() => {
-					navigate("/login");
-				}, 1000);
+				navigate("/login");
 			} else {
-				setError(data.error || "Erreur");
+				setError(data.error);
 			}
 		} catch (error) {
 			setError("Erreur serveur");
