@@ -32,7 +32,7 @@ const Login = () => {
 
 			if (data.success) {
 				localStorage.setItem("user", JSON.stringify(data.user));
-				window.location.href = "/";
+				navigate("/");
 			} else {
 				setError(data.error);
 			}
