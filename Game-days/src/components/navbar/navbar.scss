@@ -1,0 +1,23 @@
+@use "../../styles/mixins.scss" as *;
+
+nav {
+	@include positionFixedTopLeft(2vw, 50%, -50%, 0);
+	padding: 1.1vw;
+	margin: auto;
+	width: fit-content;
+	border-radius: 0.5vw;
+	background-color: #1a1a1a;
+	ul {
+		@include dflex(center, center, 2vw);
+		li {
+			@include dflex(center, center);
+			width: 6vw;
+			a {
+				font-family: "ClashGrotesk-Medium", sans-serif;
+				text-decoration: none;
+				color: #fff;
+			}
+			list-style: none;
+		}
+	}
+}
