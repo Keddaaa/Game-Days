@@ -172,27 +172,34 @@ footer {
 
 @media screen and (max-width: 768px) {
     footer {
-        height: 100%;
+        height: auto;
+        // min-height: 1080px;
         background-color: #191919;
+        justify-content: space-between;
         // padding: 6vh 2vw 0 2vw;
         .footerTop {
             width: 100%;
             height: auto;
-            img {
+            & > img {
                 display: none;
             }
             .textContainer {
                 width: 100%;
+                padding: 2vh 5vw;
+                gap: 2vh;
                 .text {
                     h2 {
-                        font-size: 10vw;
+                        font-size: 8vw;
                     }
                     .firstText {
-                        font-size: 6vw !important;
+                        font-size: 5vw !important;
                     }
                     .secondText {
-                        font-size: 4vw !important;
+                        font-size: 3vw !important;
                     }
+                }
+                .buttonContainer {
+                    gap: 2vw;
                 }
             }
             .buttonContainer {
@@ -206,10 +213,10 @@ footer {
                     &:last-child {
                         width: 7vh;
                         height: 7vh;
-
+                        padding: 0;
+                        position: relative;
                         img {
-                            width: 70%;
-                            filter: invert(1);
+                            width: 50% !important;
                             height: auto;
                             object-fit: cover;
                         }

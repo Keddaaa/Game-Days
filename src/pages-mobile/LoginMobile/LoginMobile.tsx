@@ -27,7 +27,12 @@ export const LoginMobile = () => {
                         Retour
                     </button>
                     <img
-                        src="./img/mobile/connexion.png"
+                        // src="./img/mobile/connexion.png"
+                        src={
+                            state === "inscription"
+                                ? "/img/mobile/inscription.png"
+                                : "/img/mobile/connexion.png"
+                        }
                         alt="connexion"
                         className="Bg"
                     />

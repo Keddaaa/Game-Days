@@ -2,14 +2,19 @@
 
 .indexMobile {
     width: 100%;
-    height: auto;
+    min-height: 100vh;
     background-color: #191919;
+    overflow-x: hidden; // Important pour éviter que la page entière ne scrolle horizontalement
 
+    // ==========================================
+    // HERO SECTION (Ton code original)
+    // ==========================================
     .hero {
         width: 100%;
         height: 100dvh;
         @include dflex(center, center);
         position: relative;
+
         .hero-img {
             width: 100%;
             height: 100%;
@@ -18,22 +23,27 @@
             @include positionTopLeft(50%, 50%, -50%, -50%);
             z-index: 1;
         }
+
         .hero-content {
             width: 100%;
             height: 100%;
             @include dflex(center, end, 1dvh, column);
             padding: 2vh 0;
             z-index: 2;
+
             h1 {
                 font-size: 13vw;
                 font-weight: 600;
                 color: #ffffff;
+                // font-family: "ClashGrotesk-Semibold"; // (Si tu as la police)
             }
+
             p {
                 font-size: 3.5vw;
                 font-weight: 400;
                 color: #ffffff;
             }
+
             button {
                 width: 80vw;
                 height: 70px;
@@ -41,6 +51,7 @@
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
+
                 span {
                     color: #00141c;
                     font-size: 4.5vw;
@@ -50,12 +61,14 @@
                     height: 70px;
                     width: 100%;
                     @include dflex(center, center);
+
                     &:last-child {
                         width: 90px;
                         height: 70px;
                         background-color: white;
                         @include dflex(center, center);
                         border-radius: 50%;
+
                         img {
                             width: 50%;
                             height: auto;
@@ -66,69 +79,180 @@
             }
         }
     }
-    .carroussel {
-        width: 100vw;
-        height: 100%;
+
+    // ==========================================
+    // CARROUSSEL / SLIDER SECTION (Nouveau code)
+    // ==========================================
+    .carroussel-section {
+        width: 100%;
         padding: 5vh 0;
-        @include dflex(start, start, 2vh, column);
-        // background-color: red;
-        .carroussel-content {
-            width: 90%;
-            height: 50%;
-            margin: 2vh auto;
-            background-color: #222222;
-            border-radius: 4vw;
-            padding: 2vh 2vw;
-            h2 {
-                font-size: 10vw;
-                font-weight: 600;
-                color: #ffffff;
-                font-family: "ClashGrotesk-Regular";
+        @include dflex(center, center, 2vh, column);
+
+        // Conteneur défilant
+        .slider-container {
+            width: 100%;
+            height: 45vh;
+            display: flex;
+            align-items: center;
+
+            // --- CORRECTION ICI ---
+            overflow-x: auto;
+            overflow-y: hidden; // Empêche tout mouvement vertical interne (le rebond)
+            touch-action: pan-x; // Dit au navigateur : "Ici, on ne gère que le swipe gauche/droite"
+
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+
+            // Masquer la barre de défilement
+            &::-webkit-scrollbar {
+                display: none;
             }
-            .grid {
-                width: 100%;
+
+            // La carte individuelle
+            .slide-card {
+                flex: 0 0 92%;
+                margin: 0 2.5% 0 7.5%;
+                scroll-snap-align: center;
+
+                background-color: #222222;
+                border-radius: 4vw;
+                padding: 4vh 5vw;
                 height: 100%;
-                @include dgrid(2, 1fr);
+
+                @include dflex(start, space-between, 2vh, column);
+
                 position: relative;
-                .card {
+
+                h2 {
+                    font-size: 8vw;
+                    font-weight: 600;
+                    color: #ffffff;
+                    font-family: "ClashGrotesk-Regular";
+                    line-height: 1.1;
+                }
+
+                // --- Style spécifique : Compte à rebours ---
+                .grid-countdown {
                     width: 100%;
-                    height: 100%;
-                    padding: 5vh 0;
-                    @include dflex(center, center, 0, column);
-                    h4 {
-                        font-size: 10vw;
-                        font-weight: 600;
-                        color: #ffffff;
+                    flex-grow: 1;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    position: relative;
+                    margin-top: 1vh;
+
+                    .timer-box {
+                        @include dflex(center, center, 0.5vh, column);
+                        z-index: 2;
+
+                        h4 {
+                            font-size: 11vw;
+                            font-weight: 600;
+                            color: #ffffff;
+                            line-height: 1;
+                        }
+                        p {
+                            font-size: 3.5vw;
+                            font-weight: 400;
+                            color: #aaaaaa;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                        }
                     }
-                    p {
-                        font-size: 3.5vw;
-                        font-weight: 400;
-                        color: #ffffff;
+
+                    // Les lignes de séparation
+                    .line-vertical {
+                        position: absolute;
+                        top: 15%;
+                        left: 50%;
+                        width: 1px;
+                        height: 70%;
+                        background-color: rgba(255, 255, 255, 0.15);
+                        transform: translateX(-50%);
+                    }
+                    .line-horizontal {
+                        position: absolute;
+                        top: 50%;
+                        left: 15%;
+                        width: 70%;
+                        height: 1px;
+                        background-color: rgba(255, 255, 255, 0.15);
+                        transform: translateY(-50%);
                     }
                 }
-                hr {
-                    width: 90%;
-                    height: 1px;
-                    background-color: #ffffff;
-                    &.hr1 {
-                        @include positionTopLeft(50%, 50%, -50%, -50%);
 
-                        height: 100%;
-                        width: 0;
+                // --- Style spécifique : Texte ---
+                .text-content {
+                    flex-grow: 1;
+                    @include dflex(center, center);
+                    p {
+                        font-size: 5vw;
+                        color: #dddddd;
+                        line-height: 1.5;
+                        font-family: "ClashGrotesk-Medium";
                     }
-                    &.hr2 {
-                        // transform: rotate(90deg);
-                        @include positionTopLeft(50%, 50%, -50%, -50%);
-                        width: 90%;
+                }
+
+                // --- Style spécifique : Action (Bouton) ---
+                .action-content {
+                    flex-grow: 1;
+                    @include dflex(center, space-between, 2vh, column);
+
+                    p {
+                        font-size: 4.5vw;
+                        color: #dddddd;
+                        line-height: 1.5;
+                        font-family: "ClashGrotesk-Medium";
+                    }
+
+                    .slide-btn {
+                        border: none;
+                        background-color: transparent;
+                        color: #ffffff;
+                        font-size: 4.5vw;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: transform 0.2s ease;
+                        margin-left: auto;
+
+                        &:active {
+                            transform: scale(0.95);
+                        }
                     }
                 }
             }
         }
+
+        // Les points de pagination
+        .pagination {
+            @include dflex(center, center, 3vw);
+            margin-top: 2vh;
+
+            .dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.2);
+                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+                &.active {
+                    background-color: #ffffff;
+                    width: 25px; // S'étire quand actif
+                    border-radius: 10px;
+                }
+            }
+        }
     }
+
+    // ==========================================
+    // VOTE SECTION (Ton code original)
+    // ==========================================
     .vote {
-        height: 100dvh;
+        min-height: 100dvh;
         @include dflex(center, center, 2vh, column);
         position: relative;
+
         .background {
             width: 90%;
             height: 90%;
@@ -137,52 +261,63 @@
             border-radius: 4vw;
             z-index: 1;
             @include positionTopLeft(50%, 50%, -50%, -50%);
+            // Assombrir l'image de fond pour lisibilité
+            filter: brightness(0.6);
         }
+
         .vote-container {
             width: 90%;
-            height: 90%;
+            height: 100%;
             z-index: 3;
             @include positionTopLeft(50%, 50%, -50%, -50%);
             @include dflex(start, space-between, 2vh, column);
-            padding: 5vh 2vw;
+            padding: 10dvh 6vw 5dvh 6vw;
             border-radius: 4vw;
+
             .content {
                 @include dflex(start, center, 5vh, column);
+
                 .content-Title {
                     h2 {
-                        font-size: 10vw;
-                        font-weight: 600;
+                        font-size: 8vw;
+                        // font-weight: 800;
                         color: #ffffff;
-                        font-family: "ClashGrotesk-Regular";
+                        font-family: "ClashGrotesk-Bold";
                     }
                     p {
                         font-size: 5vw;
                         font-family: "ClashGrotesk-Light";
-                        color: #ffffff;
+                        color: #e0e0e0;
                     }
                 }
+
                 .content-text {
                     @include dflex(center, center, 2vh, column);
                     p {
                         font-size: 5vw;
                         font-family: "ClashGrotesk-Light";
                         color: #ffffff;
+                        line-height: 1.4;
                     }
                 }
             }
+
             button {
                 border-radius: 20vw;
                 border: 1px solid #ffffff;
-                background-color: transparent;
+                background-color: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(5px);
                 cursor: pointer;
-                @include dflex(center, center, 6vw);
+                @include dflex(center, center, 4vw);
                 color: white;
-                font-size: 5vw;
+                font-size: 6vw;
                 font-weight: 600;
                 height: 7dvh;
-                padding: 0 2vw;
+                padding: 0 6vw;
+                margin-bottom: 2vh;
+
                 img {
-                    width: 10%;
+                    width: 20px;
                     height: auto;
                     object-fit: cover;
                     filter: invert(1);
