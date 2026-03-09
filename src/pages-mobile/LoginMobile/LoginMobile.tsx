@@ -7,16 +7,17 @@ export const LoginMobile = () => {
 	const navigate = useNavigate();
 	const { state } = location;
 
-	// const for inscription
+	// inscription
 	const [nom, setNom] = useState("");
 	const [identifiant, setIdentifiant] = useState("");
 	const [formation, setFormation] = useState("");
 	const [mdp, setMdp] = useState("");
 	const [mdpConfirm, setMdpConfirm] = useState("");
 	const [page, setPage] = useState(1);
+	const [error, setError] = useState("");
 
-	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
+	const handleSubmit = async (e?: React.FormEvent) => {
+		if (e) e.preventDefault();
 		setError("");
 
 		if (mdp !== mdpConfirm) {
@@ -44,27 +45,24 @@ export const LoginMobile = () => {
 			const data = await response.json();
 
 			if (data.success) {
-				navigate("/login");
+				navigate("/login", { state: "connexion" });
 			} else {
-				setError(data.error);
+				setError(data.error || "Erreur lors de l'inscription");
 			}
 		} catch (error) {
 			setError("Erreur serveur");
 		}
 	};
+
 	return (
 		<div className="login-mobile">
 			<div className="loginContainer">
-				{/* <div className="login-mobile-container-header">
-                    <h1>{state}</h1>
-                </div> */}
 				<div className="entete">
 					<button className="back" onClick={() => navigate(-1)}>
 						<img src="/icons/arrow.svg" alt="arrow left" />
 						Retour
 					</button>
 					<img
-						// src="./img/mobile/connexion.png"
 						src={
 							state === "inscription"
 								? "/img/mobile/inscription.png"
@@ -90,6 +88,7 @@ export const LoginMobile = () => {
 									: "Se connecter"}
 							</h1>
 						</div>
+
 						{state === "inscription" ? (
 							<div className="form-container-body">
 								<div
@@ -120,12 +119,13 @@ export const LoginMobile = () => {
 											setFormation(e.target.value)
 										}
 									>
-										<option value="_">Formation</option>
+										<option value="">Formation</option>
 										<option value="MMI">MMI</option>
 										<option value="GEA">GEA</option>
 										<option value="TC">TC</option>
 									</select>
 								</div>
+
 								<div
 									className="page"
 									style={{
@@ -133,30 +133,37 @@ export const LoginMobile = () => {
 									}}
 								>
 									<input
-										type="text"
-										placeholder="Mot de pase"
+										type="password"
+										placeholder="Mot de passe"
 										value={mdp}
 										onChange={(e) => setMdp(e.target.value)}
 									/>
 									<input
-										type="text"
-										placeholder="Confirmer le mot de pase"
+										type="password"
+										placeholder="Confirmer le mot de passe"
 										value={mdpConfirm}
 										onChange={(e) =>
 											setMdpConfirm(e.target.value)
 										}
 									/>
 								</div>
+
+								{error && (
+									<p className="error-message">{error}</p>
+								)}
+
 								<button
 									onClick={() => {
 										if (page === 1) {
 											setPage(2);
 										} else {
+											handleSubmit();
 										}
 									}}
 								>
 									{page === 1 ? "Continuer" : "S'inscrire"}
 								</button>
+
 								<p>
 									Déjà inscrit ?
 									<Link to="/login" state={"connexion"}>
@@ -186,9 +193,7 @@ export const LoginMobile = () => {
 										onChange={(e) => setMdp(e.target.value)}
 									/>
 								</div>
-								<button onClick={handleSubmit}>
-									Se connecter
-								</button>
+								<button>Se connecter</button>
 								<p>
 									Pas encore inscrit ?{" "}
 									<Link to="/login" state={"inscription"}>
@@ -207,6 +212,3 @@ export const LoginMobile = () => {
 		</div>
 	);
 };
-function setError(_arg0: string) {
-	throw new Error("Function not implemented.");
-}
