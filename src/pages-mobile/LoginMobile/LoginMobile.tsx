@@ -1,13 +1,13 @@
 import "./LoginMobile.scss";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { authService } from "../../services/authService";
 
 export const LoginMobile = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-	const { state } = location;
+	const state = location.state || "connexion";
 
-	// inscription
 	const [nom, setNom] = useState("");
 	const [identifiant, setIdentifiant] = useState("");
 	const [formation, setFormation] = useState("");
@@ -16,8 +16,7 @@ export const LoginMobile = () => {
 	const [page, setPage] = useState(1);
 	const [error, setError] = useState("");
 
-	const handleSubmit = async (e?: React.FormEvent) => {
-		if (e) e.preventDefault();
+	const handleRegister = async () => {
 		setError("");
 
 		if (mdp !== mdpConfirm) {
@@ -26,30 +25,39 @@ export const LoginMobile = () => {
 		}
 
 		try {
-			const response = await fetch(
-				"https://gameday.alwaysdata.net/register.php",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						nom_prenom: nom,
-						identifiant: identifiant,
-						formation: formation,
-						mot_de_passe: mdp,
-					}),
-				},
-			);
-
-			const data = await response.json();
+			const data = await authService.register({
+				nom_prenom: nom,
+				identifiant,
+				formation,
+				mot_de_passe: mdp,
+			});
 
 			if (data.success) {
 				navigate("/login", { state: "connexion" });
 			} else {
 				setError(data.error || "Erreur lors de l'inscription");
 			}
-		} catch (error) {
+		} catch {
+			setError("Erreur serveur");
+		}
+	};
+
+	const handleLogin = async () => {
+		setError("");
+
+		try {
+			const data = await authService.login({
+				identifiant,
+				mot_de_passe: mdp,
+			});
+
+			if (data.success) {
+				localStorage.setItem("user", JSON.stringify(data.user));
+				navigate("/");
+			} else {
+				setError(data.error || "Erreur de connexion");
+			}
+		} catch {
 			setError("Erreur serveur");
 		}
 	};
@@ -62,6 +70,7 @@ export const LoginMobile = () => {
 						<img src="/icons/arrow.svg" alt="arrow left" />
 						Retour
 					</button>
+
 					<img
 						src={
 							state === "inscription"
@@ -157,7 +166,7 @@ export const LoginMobile = () => {
 										if (page === 1) {
 											setPage(2);
 										} else {
-											handleSubmit();
+											handleRegister();
 										}
 									}}
 								>
@@ -165,11 +174,12 @@ export const LoginMobile = () => {
 								</button>
 
 								<p>
-									Déjà inscrit ?
-									<Link to="/login" state={"connexion"}>
+									Déjà inscrit ?{" "}
+									<Link to="/login" state="connexion">
 										Se connecter
 									</Link>
 								</p>
+
 								<p>
 									© 2025 Journée du Jeu Vidéo — IUT de Meaux
 									Tous droits réservés.
@@ -187,19 +197,28 @@ export const LoginMobile = () => {
 										}
 									/>
 									<input
-										type="text"
-										placeholder="Mot de pase"
+										type="password"
+										placeholder="Mot de passe"
 										value={mdp}
 										onChange={(e) => setMdp(e.target.value)}
 									/>
 								</div>
-								<button>Se connecter</button>
+
+								{error && (
+									<p className="error-message">{error}</p>
+								)}
+
+								<button onClick={handleLogin}>
+									Se connecter
+								</button>
+
 								<p>
 									Pas encore inscrit ?{" "}
-									<Link to="/login" state={"inscription"}>
+									<Link to="/login" state="inscription">
 										S'inscrire
 									</Link>
 								</p>
+
 								<p>
 									© 2025 Journée du Jeu Vidéo — IUT de Meaux
 									Tous droits réservés.

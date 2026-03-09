@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./inscription.scss";
+import { authService } from "../../services/authService";
 
 const Inscription = () => {
 	const navigate = useNavigate();
@@ -23,30 +24,19 @@ const Inscription = () => {
 		}
 
 		try {
-			const response = await fetch(
-				"https://gameday.alwaysdata.net/register.php",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						nom_prenom: nomPrenom,
-						identifiant: identifiant,
-						formation: formation,
-						mot_de_passe: password,
-					}),
-				},
-			);
-
-			const data = await response.json();
+			const data = await authService.register({
+				nom_prenom: nomPrenom,
+				identifiant,
+				formation,
+				mot_de_passe: password,
+			});
 
 			if (data.success) {
 				navigate("/login");
 			} else {
-				setError(data.error);
+				setError(data.error || "Erreur lors de l'inscription");
 			}
-		} catch (error) {
+		} catch {
 			setError("Erreur serveur");
 		}
 	};

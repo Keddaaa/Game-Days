@@ -1,42 +1,32 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
+import { authService } from "../../services/authService";
 
 const Login = () => {
 	const navigate = useNavigate();
 	const [identifiant, setIdentifiant] = useState("");
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
-	const [_, setError] = useState("");
+	const [error, setError] = useState("");
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setError("");
 
 		try {
-			const response = await fetch(
-				"https://gameday.alwaysdata.net/login.php",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						identifiant: identifiant,
-						mot_de_passe: password,
-					}),
-				},
-			);
-
-			const data = await response.json();
+			const data = await authService.login({
+				identifiant,
+				mot_de_passe: password,
+			});
 
 			if (data.success) {
 				localStorage.setItem("user", JSON.stringify(data.user));
 				navigate("/");
 			} else {
-				setError(data.error);
+				setError(data.error || "Erreur de connexion");
 			}
-		} catch (err) {
+		} catch {
 			setError("Erreur serveur");
 		}
 	};
