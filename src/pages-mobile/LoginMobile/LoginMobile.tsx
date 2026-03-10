@@ -6,7 +6,9 @@ import { authService } from "../../services/authService";
 export const LoginMobile = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-	const state = location.state || "connexion";
+
+	const searchParams = new URLSearchParams(location.search);
+	const mode = searchParams.get("mode") || "connexion";
 
 	const [nom, setNom] = useState("");
 	const [identifiant, setIdentifiant] = useState("");
@@ -33,7 +35,7 @@ export const LoginMobile = () => {
 			});
 
 			if (data.success) {
-				navigate("/login", { state: "connexion" });
+				navigate("/login?mode=connexion");
 			} else {
 				setError(data.error || "Erreur lors de l'inscription");
 			}
@@ -73,7 +75,7 @@ export const LoginMobile = () => {
 
 					<img
 						src={
-							state === "inscription"
+							mode === "inscription"
 								? "/img/mobile/inscription.png"
 								: "/img/mobile/connexion.png"
 						}
@@ -86,19 +88,19 @@ export const LoginMobile = () => {
 					<div className="form-container">
 						<div
 							className={
-								state === "inscription"
+								mode === "inscription"
 									? "form-container-header"
 									: "form-container-header-center"
 							}
 						>
 							<h1>
-								{state === "inscription"
+								{mode === "inscription"
 									? "S'inscrire"
 									: "Se connecter"}
 							</h1>
 						</div>
 
-						{state === "inscription" ? (
+						{mode === "inscription" ? (
 							<div className="form-container-body">
 								<div
 									className="page"
@@ -175,7 +177,7 @@ export const LoginMobile = () => {
 
 								<p>
 									Déjà inscrit ?{" "}
-									<Link to="/login" state="connexion">
+									<Link to="/login?mode=connexion">
 										Se connecter
 									</Link>
 								</p>
