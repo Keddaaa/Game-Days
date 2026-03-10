@@ -13,41 +13,44 @@ import IndexMobile from "./pages-mobile/index/index";
 import { LoginMobile } from "./pages-mobile/LoginMobile/LoginMobile";
 
 function App() {
-	const location = useLocation();
-	const isLoginPage =
-		location.pathname === "/login" || location.pathname === "/inscription";
-	const [isMobile, setIsMobile] = useState(false);
+    const location = useLocation();
+    const isLoginPage =
+        location.pathname === "/login" || location.pathname === "/inscription";
+    const [isMobile, setIsMobile] = useState(false);
 
-	// Check if mobile
-	useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth < 768);
-		};
-		window.addEventListener("resize", handleResize);
-		handleResize();
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
+    // Check if mobile au chargement comme au
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        window.addEventListener("resize", handleResize);
+        window.addEventListener("load", handleResize);
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
-	return (
-		<>
-			{!isLoginPage && !isMobile && <Navbar />}
-			<Routes>
-				{isMobile ? (
-					<>
-						<Route path="/" element={<IndexMobile />} />
-						<Route path="/login" element={<LoginMobile />} />
-					</>
-				) : (
-					<>
-						<Route path="/" element={<Index />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/inscription" element={<Inscription />} />
-					</>
-				)}
-			</Routes>
-			{!isLoginPage && <Footer />}
-		</>
-	);
+    return (
+        <>
+            {!isLoginPage && !isMobile && <Navbar />}
+            <Routes>
+                {isMobile ? (
+                    <>
+                        <Route path="/" element={<IndexMobile />} />
+                        <Route path="/login" element={<LoginMobile />} />
+                        <Route path="*" element={<IndexMobile />} />
+                    </>
+                ) : (
+                    <>
+                        <Route path="/" element={<Index />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/inscription" element={<Inscription />} />
+                        <Route path="*" element={<Index />} />
+                    </>
+                )}
+            </Routes>
+            {!isLoginPage && <Footer />}
+        </>
+    );
 }
 
 export default App;
