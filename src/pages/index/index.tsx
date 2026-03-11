@@ -134,7 +134,7 @@ const Index = () => {
 	};
 	const defilement = [
 		"MMI Game Days",
-		"Le 13/03/2026",
+		"Le 26/03/2026",
 		"A meaux",
 		"Ready to play?",
 		"#GameDays",
