@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+	const navigate = useNavigate();
 	const slides = [
 		{
 			title: "De quoi s’agit-il ?",
@@ -267,7 +269,10 @@ const Index = () => {
 						officiels, des jeux <br /> multijoueurs canapé et des
 						jeux <br /> VR proposés sur place.
 					</p>
-					<button className="voir">
+					<button
+						className="voir"
+						onClick={() => navigate("/votes/vote")}
+					>
 						<span>Voter maintenant</span>
 						<img src="/icons/arrowRight.svg" alt="" />
 					</button>
