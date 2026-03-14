@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./vote1.scss";
 
-const Vote8 = () => {
+const finvote = () => {
 	const navigate = useNavigate();
 
 	return (
@@ -21,4 +21,4 @@ const Vote8 = () => {
 	);
 };
 
-export default Vote8;
+export default finvote;

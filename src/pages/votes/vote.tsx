@@ -26,7 +26,7 @@ const Vote = () => {
 
 				<button
 					className="next-button"
-					onClick={() => navigate("/vote1")}
+					onClick={() => navigate("/premiersondage")}
 				>
 					Suivant
 				</button>

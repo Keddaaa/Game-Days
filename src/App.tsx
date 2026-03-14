@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import Vote from "./pages/votes/vote.tsx";
-import Vote1 from "./pages/votes/vote1.tsx";
-import Vote3 from "./pages/votes/vote3.tsx";
-import Vote4 from "./pages/votes/vote4.tsx";
-import Vote5 from "./pages/votes/vote5.tsx";
-import Vote7 from "./pages/votes/vote7.tsx";
-import Vote8 from "./pages/votes/vote8.tsx";
+import Vote1 from "./pages/votes/premiersondage.tsx";
+import Vote3 from "./pages/votes/secondsondage.tsx";
+import Vote4 from "./pages/votes/troisiemesondage.tsx";
+import Vote5 from "./pages/votes/finsondage.tsx";
+import Vote7 from "./pages/votes/secondvote.tsx";
+import Vote8 from "./pages/votes/finvote.tsx";
 
 // Pages Desktop
 import Index from "./pages/index/index";
@@ -53,12 +53,12 @@ function App() {
 						<Route path="/inscription" element={<Inscription />} />
 						<Route path="*" element={<Index />} />
 						<Route path="/vote" element={<Vote />} />
-						<Route path="/vote1" element={<Vote1 />} />
-						<Route path="/vote3" element={<Vote3 />} />
-						<Route path="/vote4" element={<Vote4 />} />
-						<Route path="/vote5" element={<Vote5 />} />
-						<Route path="/vote7" element={<Vote7 />} />
-						<Route path="/vote8" element={<Vote8 />} />
+						<Route path="/premiersondage" element={<Vote1 />} />
+						<Route path="/secondsondage" element={<Vote3 />} />
+						<Route path="/troisiemesondage" element={<Vote4 />} />
+						<Route path="/finsondage" element={<Vote5 />} />
+						<Route path="/secondvote" element={<Vote7 />} />
+						<Route path="/finvote" element={<Vote8 />} />
 					</>
 				)}
 			</Routes>

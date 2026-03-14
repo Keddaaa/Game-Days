@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./vote1.scss";
 
-const Vote5 = () => {
+const finsondage = () => {
 	const navigate = useNavigate();
 
 	return (
@@ -16,7 +16,7 @@ const Vote5 = () => {
 
 				<button
 					className="next-button"
-					onClick={() => navigate("/vote6")}
+					onClick={() => navigate("/premiervote")}
 				>
 					Voter maintenant
 					<img
@@ -30,4 +30,4 @@ const Vote5 = () => {
 	);
 };
 
-export default Vote5;
+export default finsondage;

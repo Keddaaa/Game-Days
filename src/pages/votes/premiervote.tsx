@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./vote6.scss";
 import { useVote } from "../../context/VoteContext";
 
-const Vote6 = () => {
+const premiervote = () => {
 	const navigate = useNavigate();
 	const { selectedGames, setSelectedGames } = useVote();
 
@@ -76,14 +76,14 @@ const Vote6 = () => {
 				<div className="footer-actions">
 					<button
 						className="btn-next"
-						onClick={() => navigate("/vote7")}
+						onClick={() => navigate("/secondvote")}
 					>
 						Suivant
 					</button>
 
 					<button
 						className="btn-skip"
-						onClick={() => navigate("/vote7")}
+						onClick={() => navigate("/secondvote")}
 					>
 						Passer
 					</button>
@@ -93,4 +93,4 @@ const Vote6 = () => {
 	);
 };
 
-export default Vote6;
+export default premiervote;

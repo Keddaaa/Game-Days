@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./vote1.scss";
 import { useVote } from "../../context/VoteContext";
 
-const Vote3 = () => {
+const secondsondage = () => {
 	const navigate = useNavigate();
 	const { typeJeu, setTypeJeu, participation, setParticipation } = useVote();
 
@@ -62,7 +62,7 @@ const Vote3 = () => {
 
 				<button
 					className="next-button"
-					onClick={() => navigate("/vote4")}
+					onClick={() => navigate("/troisiemesondage")}
 				>
 					Suivant
 				</button>
@@ -71,4 +71,4 @@ const Vote3 = () => {
 	);
 };
 
-export default Vote3;
+export default secondsondage;
