@@ -271,7 +271,7 @@ const Index = () => {
 					</p>
 					<button
 						className="voir"
-						onClick={() => navigate("/votes/vote")}
+						onClick={() => navigate("./votes/vote")}
 					>
 						<span>Voter maintenant</span>
 						<img src="/icons/arrowRight.svg" alt="" />
