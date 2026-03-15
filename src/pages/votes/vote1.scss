@@ -149,3 +149,12 @@ $color-white: #ffffff;
 		}
 	}
 }
+.vote-success {
+	background: rgba(20, 165, 44, 0.41);
+	color: rgba(0, 60, 10, 0.41);
+	border: rgba(20, 165, 44, 0.41) solid 2px;
+	padding: 12px 20px;
+	border-radius: 8px;
+	margin-top: 20px;
+	font-weight: 500;
+}

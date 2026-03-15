@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import "./vote1.scss";
+import "../styles/vote1.scss";
 
-const finvote = () => {
+const Vote8 = () => {
 	const navigate = useNavigate();
 
 	return (
@@ -9,9 +9,13 @@ const finvote = () => {
 			<main className="content">
 				<h1>Merci pour tes réponses !</h1>
 
+				<div className="vote-success">
+					Ton vote a bien été pris en compte
+				</div>
+
 				<button
 					className="next-button"
-					onClick={() => navigate("/index")}
+					onClick={() => navigate("/")}
 					style={{ marginTop: "20px" }}
 				>
 					Retour
@@ -21,4 +25,4 @@ const finvote = () => {
 	);
 };
 
-export default finvote;
+export default Vote8;

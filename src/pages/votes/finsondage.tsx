@@ -16,7 +16,7 @@ const finsondage = () => {
 
 				<button
 					className="next-button"
-					onClick={() => navigate("/premiervote")}
+					onClick={() => navigate("premiervote")}
 				>
 					Voter maintenant
 					<img
