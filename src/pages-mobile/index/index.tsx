@@ -204,7 +204,7 @@ const Index = () => {
 							</p>
 						</div>
 					</div>
-					<button>
+					<button onClick={() => handleNavigate("/vote")}>
 						Voter maintenant
 						<img
 							src="/icons/arrow.svg"

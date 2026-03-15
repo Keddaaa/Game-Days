@@ -275,8 +275,8 @@
             border-radius: 4vw;
 
             .content {
-                @include dflex(start, center, 5vh, column);
-
+                @include dflex(start, start, 0, column);
+                text-align: left;
                 .content-Title {
                     h2 {
                         font-size: 8vw;
@@ -292,7 +292,7 @@
                 }
 
                 .content-text {
-                    @include dflex(center, center, 2vh, column);
+                    @include dflex(center, center, 0, column);
                     p {
                         font-size: 5vw;
                         font-family: "ClashGrotesk-Light";
