@@ -26,8 +26,8 @@ interface VoteContextType {
 	setExperienceTournoi: (value: string) => void;
 
 	// Page 6
-	selectedGames: string[];
-	setSelectedGames: (games: string[]) => void;
+	selectedGames: number[];
+	setSelectedGames: (games: number[]) => void;
 
 	// Reset
 	resetVote: () => void;
@@ -53,7 +53,7 @@ export const VoteProvider: FC<{ children: ReactNode }> = ({
 	const [experienceTournoi, setExperienceTournoi] = useState("");
 
 	// Page 6
-	const [selectedGames, setSelectedGames] = useState<string[]>([]);
+	const [selectedGames, setSelectedGames] = useState<number[]>([]);
 
 	const resetVote = () => {
 		setFrequence("");

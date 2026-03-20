@@ -1,9 +1,28 @@
 import "./index.scss";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { authService } from "../../../src/services/authService";
 
 const Index = () => {
 	const navigate = useNavigate();
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+	useEffect(() => {
+		const user = authService.getUser();
+		setIsLoggedIn(!!user);
+	}, []);
+
+	const handleLogout = () => {
+		authService.logout();
+		setIsLoggedIn(false);
+		setShowLogoutPopup(true);
+		setTimeout(() => {
+			setShowLogoutPopup(false);
+			navigate("/");
+		}, 2000);
+	};
+
 	// Compte à rebours (26 mars 2026 09h00)
 	const date = new Date("2026-03-26T09:00:00");
 	const [days, setDays] = useState(0);
@@ -78,19 +97,32 @@ const Index = () => {
 
 	return (
 		<div className="indexMobile">
+			{showLogoutPopup && (
+				<div className="logout-popup">
+					<div className="popup-content">
+						<p>Vous vous êtes déconnecté avec succès</p>
+					</div>
+				</div>
+			)}
 			<section className="hero">
 				<img src="/img/mobileHero.gif" alt="" className="hero-img" />
 				<div className="hero-content">
 					<h1>Game Days</h1>
-					<p>La première édition gaming de l’IUT de Meaux</p>
-					<button
-						onClick={() => handleNavigate("/login", "inscription")}
-					>
-						<span>S’inscrire maintenant</span>
-						<span>
-							<img src="/icons/arrow.svg" alt="" />
-						</span>
-					</button>
+					<p>La première édition gaming de l'IUT de Meaux</p>
+					{isLoggedIn ? (
+						<button onClick={handleLogout}>
+							<span>Se déconnecter</span>
+						</button>
+					) : (
+						<button
+							onClick={() => handleNavigate("/login", "inscription")}
+						>
+							<span>S'inscrire maintenant</span>
+							<span>
+								<img src="/icons/arrow.svg" alt="" />
+							</span>
+						</button>
+					)}
 				</div>
 			</section>
 

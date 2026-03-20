@@ -6,11 +6,33 @@ import { useEffect, useState } from "react";
 const Vote = () => {
 	const navigate = useNavigate();
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [hasVoted, setHasVoted] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const user = authService.getUser();
-		setIsLoggedIn(!!user);
+		const checkVoteStatus = async () => {
+			const user = authService.getUser();
+			if (user) {
+				setIsLoggedIn(true);
+				const result = await authService.checkVoted();
+				if (result.hasVoted) {
+					setHasVoted(true);
+				}
+			}
+			setLoading(false);
+		};
+		checkVoteStatus();
 	}, []);
+
+	if (loading) {
+		return (
+			<div className="vote">
+				<main className="content">
+					<h1>Chargement...</h1>
+				</main>
+			</div>
+		);
+	}
 
 	if (!isLoggedIn) {
 		return (
@@ -23,6 +45,23 @@ const Vote = () => {
 						onClick={() => navigate("/login")}
 					>
 						Se connecter
+					</button>
+				</main>
+			</div>
+		);
+	}
+
+	if (hasVoted) {
+		return (
+			<div className="vote">
+				<main className="content">
+					<h1>Vous avez déjà voted</h1>
+					<p>Vous avez déjà participé au vote. Merci !</p>
+					<button
+						className="next-button"
+						onClick={() => navigate("/")}
+					>
+						Retour à l'accueil
 					</button>
 				</main>
 			</div>

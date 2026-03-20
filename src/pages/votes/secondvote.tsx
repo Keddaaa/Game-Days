@@ -1,38 +1,41 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./vote6.scss";
 import { useVote } from "../../context/VoteContext";
 import { authService } from "../../services/authService";
+
+type Jeu = {
+	id_jeu: number;
+	nom_jeu: string;
+	categorie: string;
+};
 
 const secondvote = () => {
 	const navigate = useNavigate();
 	const { selectedGames, setSelectedGames } = useVote();
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [jeux, setJeux] = useState<Jeu[]>([]);
 
-	const gamesList = [
-		"FC 26 (Equipe de 2)",
-		"Smash Bros Ultimate (Equipe de 2/4)",
-		"Dragon Ball Fighter Z",
-		"Naruto Storm 4",
-		"Tekken 8",
-		"Rocket League",
-		"Street Fighter 6",
-		"Je ne suis pas intéressé(e) par cet espace",
-	];
+	useEffect(() => {
+		authService.getJeux().then((jeuxRecup) => {
+			const jeuxCompetitif = jeuxRecup.filter((j: Jeu) => j.categorie === "competitif");
+			setJeux(jeuxCompetitif);
+		});
+	}, []);
 
-	const toggleGame = (game: string) => {
-		if (selectedGames.includes(game)) {
-			setSelectedGames(selectedGames.filter((g: string) => g !== game));
+	const toggleGame = (gameId: number) => {
+		if (selectedGames.includes(gameId)) {
+			setSelectedGames(selectedGames.filter((g: number) => g !== gameId));
 		} else {
-			setSelectedGames([...selectedGames, game]);
+			setSelectedGames([...selectedGames, gameId]);
 		}
 	};
 
 	const handleSubmit = async () => {
 		setIsSubmitting(true);
 		try {
-			for (const game of selectedGames) {
-				await authService.saveVote(game);
+			for (const gameId of selectedGames) {
+				await authService.saveVote(gameId);
 			}
 		} catch (error) {
 			console.error("Erreur lors de l'envoi des votes:", error);
@@ -61,15 +64,15 @@ const secondvote = () => {
 					</p>
 
 					<div className="games-list">
-						{gamesList.map((game) => (
+						{jeux.map((game) => (
 							<button
-								key={game}
+								key={game.id_jeu}
 								className={`game-option ${
-									selectedGames.includes(game) ? "active" : ""
+									selectedGames.includes(game.id_jeu) ? "active" : ""
 								}`}
-								onClick={() => toggleGame(game)}
+								onClick={() => toggleGame(game.id_jeu)}
 							>
-								{game}
+								{game.nom_jeu}
 							</button>
 						))}
 					</div>

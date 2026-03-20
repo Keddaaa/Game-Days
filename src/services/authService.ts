@@ -52,7 +52,7 @@ export const authService = {
 		return user ? JSON.parse(user) : null;
 	},
 
-	async saveVote(id_jeu: string) {
+	async saveVote(id_jeu: number) {
 		const user = authService.getUser();
 		if (!user || !user.id) {
 			return { success: false, message: "Utilisateur non connecté" };
@@ -70,15 +70,6 @@ export const authService = {
 		});
 
 		return await response.json();
-	},
-
-	async saveVotes(id_jeux: string[]) {
-		const results = [];
-		for (const id_jeu of id_jeux) {
-			const result = await authService.saveVote(id_jeu);
-			results.push(result);
-		}
-		return results;
 	},
 
 	async saveSondage(data: {
@@ -105,6 +96,40 @@ export const authService = {
 				type_de_jeu_prefere: data.type_de_jeu_prefere,
 				participation: data.participation,
 				participation_anterieure: data.participation_anterieure,
+			}),
+		});
+
+		return await response.json();
+	},
+
+	async getJeux() {
+		const response = await fetch(`${API_BASE_URL}/jeu.php`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		const data = await response.json();
+		if (data.success) {
+			return data.jeux;
+		}
+		return [];
+	},
+
+	async checkVoted() {
+		const user = authService.getUser();
+		if (!user || !user.id) {
+			return { success: false, hasVoted: false };
+		}
+
+		const response = await fetch(`${API_BASE_URL}/checkvote.php`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				id_user: user.id,
 			}),
 		});
 

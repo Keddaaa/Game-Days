@@ -1,31 +1,34 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./vote6.scss";
 import { useVote } from "../../context/VoteContext";
+import { authService } from "../../../src/services/authService";
+
+type Jeu = {
+	id_jeu: number;
+	nom_jeu: string;
+	categorie: string;
+};
 
 const premiervoteMobile = () => {
 	const navigate = useNavigate();
 	const { selectedGames, setSelectedGames } = useVote();
+	const [jeux, setJeux] = useState<Jeu[]>([]);
 
 	const [customGame, setCustomGame] = useState("");
 
-	const gamesList = [
-		"Mario Kart",
-		"Mario Party",
-		"Rocket League",
-		"Brawlhalla",
-		"NBA 2k26",
-		"Smash Bros Ultimate",
-		"Naruto Storm 4",
-		"Peut importe je veux juste découvrir",
-		"Je ne suis pas intéressé(e) par cet espace",
-	];
+	useEffect(() => {
+		authService.getJeux().then((jeuxRecup) => {
+			const jeuxCasual = jeuxRecup.filter((j: Jeu) => j.categorie === "casual");
+			setJeux(jeuxCasual);
+		});
+	}, []);
 
-	const toggleGame = (game: string) => {
-		if (selectedGames.includes(game)) {
-			setSelectedGames(selectedGames.filter((g: string) => g !== game));
+	const toggleGame = (gameId: number) => {
+		if (selectedGames.includes(gameId)) {
+			setSelectedGames(selectedGames.filter((g: number) => g !== gameId));
 		} else {
-			setSelectedGames([...selectedGames, game]);
+			setSelectedGames([...selectedGames, gameId]);
 		}
 	};
 
@@ -49,15 +52,15 @@ const premiervoteMobile = () => {
 					</p>
 
 					<div className="games-list">
-						{gamesList.map((game) => (
+						{jeux.map((game) => (
 							<button
-								key={game}
+								key={game.id_jeu}
 								className={`game-option ${
-									selectedGames.includes(game) ? "active" : ""
+									selectedGames.includes(game.id_jeu) ? "active" : ""
 								}`}
-								onClick={() => toggleGame(game)}
+								onClick={() => toggleGame(game.id_jeu)}
 							>
-								{game}
+								{game.nom_jeu}
 							</button>
 						))}
 					</div>
