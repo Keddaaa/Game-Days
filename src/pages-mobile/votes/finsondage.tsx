@@ -1,8 +1,30 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./vote1.scss";
+import { useVote } from "../../context/VoteContext";
+import { authService } from "../../../src/services/authService";
 
 const finsondageMobile = () => {
     const navigate = useNavigate();
+    const { frequence, plateforme, typeJeu, participation, experienceTournoi } = useVote();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async () => {
+        setIsSubmitting(true);
+        try {
+            await authService.saveSondage({
+                plateforme,
+                frequence_jeu: frequence,
+                type_de_jeu_prefere: typeJeu,
+                participation,
+                participation_anterieure: experienceTournoi,
+            });
+        } catch (error) {
+            console.error("Erreur lors de l'envoi du sondage:", error);
+        }
+        setIsSubmitting(false);
+        navigate("/premiervote");
+    };
 
     return (
         <div className="vote-page-mobile">
@@ -16,9 +38,10 @@ const finsondageMobile = () => {
 
                 <button
                     className="next-button"
-                    onClick={() => navigate("/premiervote")}
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
                 >
-                    Voter maintenant
+                    {isSubmitting ? "Envoi en cours..." : "Voter maintenant"}
                     <img
                         src="/icons/arrowRight.svg"
                         alt=""

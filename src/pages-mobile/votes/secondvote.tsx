@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./vote6.scss";
 import { useVote } from "../../context/VoteContext";
+import { authService } from "../../../src/services/authService";
 
 const secondvoteMobile = () => {
 	const navigate = useNavigate();
 	const { selectedGames, setSelectedGames } = useVote();
-
-	const [customGame, setCustomGame] = useState("");
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const gamesList = [
 		"FC 26 (Equipe de 2)",
@@ -26,6 +26,19 @@ const secondvoteMobile = () => {
 		} else {
 			setSelectedGames([...selectedGames, game]);
 		}
+	};
+
+	const handleSubmit = async () => {
+		setIsSubmitting(true);
+		try {
+			for (const game of selectedGames) {
+				await authService.saveVote(game);
+			}
+		} catch (error) {
+			console.error("Erreur lors de l'envoi des votes:", error);
+		}
+		setIsSubmitting(false);
+		navigate("/finvote");
 	};
 
 	return (
@@ -60,24 +73,15 @@ const secondvoteMobile = () => {
 							</button>
 						))}
 					</div>
-
-					<div className="custom-game">
-						<p>Autre jeu :</p>
-						<input
-							type="text"
-							placeholder="Proposer un jeu..."
-							value={customGame}
-							onChange={(e) => setCustomGame(e.target.value)}
-						/>
-					</div>
 				</div>
 
 				<div className="footer-actions">
 					<button
 						className="btn-next"
-						onClick={() => navigate("/finvote")}
+						onClick={handleSubmit}
+						disabled={isSubmitting}
 					>
-						Suivant
+						{isSubmitting ? "Envoi en cours..." : "Suivant"}
 					</button>
 
 					<button
