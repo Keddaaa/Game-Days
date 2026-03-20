@@ -8,8 +8,8 @@ const secondsondageMobile = () => {
 
 	return (
 		<div className="vote-page-mobile">
-			<button className="back-button" onClick={() => navigate("/vote1")}>
-				<img src="/icons/arrow-left.svg" alt="" />
+			<button className="back-button" onClick={() => navigate("/premiersondage")}>
+				<span className="back-arrow">←</span>
 				<span>Retour</span>
 			</button>
 

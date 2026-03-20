@@ -33,9 +33,9 @@ const VoteMobile = () => {
 		<div className="vote">
 			<button
 				className="back-button"
-				onClick={() => (window.location.href = "/")}
+				onClick={() => navigate("/")}
 			>
-				<img src="/icons/arrow-left.svg" alt="" />
+				<span className="back-arrow">←</span>
 				<span>Retour</span>
 			</button>
 
