@@ -8,7 +8,7 @@ const premiersondage = () => {
 
     return (
         <div className="vote-page questionnaire">
-            <button className="back-button" onClick={() => navigate("/")}>
+            <button className="back-button" onClick={() => navigate("/vote")}>
                 <img src="/icons/arrow-left.svg" alt="" />
                 <span>Retour</span>
             </button>

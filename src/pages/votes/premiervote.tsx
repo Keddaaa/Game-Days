@@ -31,7 +31,7 @@ const premiervote = () => {
 
 	return (
 		<div className="vote6-container">
-			<button className="back-btn" onClick={() => navigate("/vote5")}>
+			<button className="back-btn" onClick={() => navigate("/finsondage")}>
 				← Retour
 			</button>
 

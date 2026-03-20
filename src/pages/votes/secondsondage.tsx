@@ -8,7 +8,7 @@ const secondsondage = () => {
 
 	return (
 		<div className="vote-page">
-			<button className="back-button" onClick={() => navigate("/vote1")}>
+			<button className="back-button" onClick={() => navigate("/premiersondage")}>
 				<img src="/icons/arrow-left.svg" alt="" />
 				<span>Retour</span>
 			</button>

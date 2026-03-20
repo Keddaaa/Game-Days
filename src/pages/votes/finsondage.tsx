@@ -28,6 +28,11 @@ const finsondage = () => {
 
     return (
         <div className="vote-page">
+            <button className="back-button" onClick={() => navigate("/troisiemesondage")}>
+                <span className="back-arrow">←</span>
+                <span>Retour</span>
+            </button>
+
             <main className="content">
                 <h1>Merci pour tes réponses !</h1>
 

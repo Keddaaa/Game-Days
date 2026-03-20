@@ -43,7 +43,7 @@ const secondvote = () => {
 
 	return (
 		<div className="vote6-container">
-			<button className="back-btn" onClick={() => navigate("/vote6")}>
+			<button className="back-btn" onClick={() => navigate("/premiervote")}>
 				← Retour
 			</button>
 

@@ -9,7 +9,7 @@ const troisiemesondage = () => {
 
 	return (
 		<div className="vote-page">
-			<button className="back-button" onClick={() => navigate("/vote3")}>
+			<button className="back-button" onClick={() => navigate("/secondsondage")}>
 				<img src="/icons/arrow-left.svg" alt="" />
 				<span>Retour</span>
 			</button>
