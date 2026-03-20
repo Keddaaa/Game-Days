@@ -32,6 +32,7 @@ function App() {
     const location = useLocation();
     const isLoginPage =
         location.pathname === "/login" || location.pathname === "/inscription";
+    const isVotePage = ["/vote", "/premiersondage", "/secondsondage", "/troisiemesondage", "/finsondage", "/premiervote", "/secondvote", "/finvote"].includes(location.pathname);
     const [isMobile, setIsMobile] = useState(false);
 
     // Check if mobile au chargement comme au
@@ -47,7 +48,7 @@ function App() {
 
     return (
         <>
-            {!isLoginPage && !isMobile && <Navbar />}
+            {!isLoginPage && !isVotePage && !isMobile && <Navbar />}
             <Routes>
                 {isMobile ? (
                     <>
@@ -98,7 +99,7 @@ function App() {
                     </>
                 )}
             </Routes>
-            {!isLoginPage && <Footer />}
+            {!isLoginPage && !isVotePage && <Footer />}
         </>
     );
 }

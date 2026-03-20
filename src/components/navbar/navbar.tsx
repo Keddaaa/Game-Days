@@ -1,11 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import "./navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { authService } from "../../services/authService";
 
 const Navbar = () => {
     const [activeSection, setActiveSection] = useState("accueil");
     const [selectStyle, setSelectStyle] = useState({});
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showLogoutPopup, setShowLogoutPopup] = useState(false);
     const navRef = useRef<HTMLElement>(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const user = authService.getUser();
+        setIsLoggedIn(!!user);
+    }, []);
+
+    const handleLogout = () => {
+        authService.logout();
+        setIsLoggedIn(false);
+        setShowLogoutPopup(true);
+        setTimeout(() => {
+            setShowLogoutPopup(false);
+            navigate("/");
+        }, 2000);
+    };
 
     const navLinks = [
         { id: "accueil", label: "Accueil" },
@@ -95,10 +114,23 @@ const Navbar = () => {
                 </ul>
             </nav>
             <nav className="nav-login">
-                <Link to="/login" className="login-btn">
-                    S'inscrire/connexion
-                </Link>
+                {isLoggedIn ? (
+                    <button className="login-btn" onClick={handleLogout}>
+                        Se déconnecter
+                    </button>
+                ) : (
+                    <Link to="/login" className="login-btn">
+                        S'inscrire/connexion
+                    </Link>
+                )}
             </nav>
+            {showLogoutPopup && (
+                <div className="logout-popup">
+                    <div className="popup-content">
+                        <p>Vous vous êtes déconnecté avec succès</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

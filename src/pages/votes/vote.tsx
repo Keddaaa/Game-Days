@@ -1,8 +1,34 @@
 import "./vote.scss";
 import { useNavigate } from "react-router-dom";
+import { authService } from "../../services/authService";
+import { useEffect, useState } from "react";
 
 const Vote = () => {
 	const navigate = useNavigate();
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	useEffect(() => {
+		const user = authService.getUser();
+		setIsLoggedIn(!!user);
+	}, []);
+
+	if (!isLoggedIn) {
+		return (
+			<div className="vote">
+				<main className="content">
+					<h1>Accès restreint</h1>
+					<p>Vous devez être connecté pour voter.</p>
+					<button
+						className="next-button"
+						onClick={() => navigate("/login")}
+					>
+						Se connecter
+					</button>
+				</main>
+			</div>
+		);
+	}
+
 	return (
 		<div className="vote">
 			<button

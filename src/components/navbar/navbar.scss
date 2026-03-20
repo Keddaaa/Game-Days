@@ -83,9 +83,34 @@
         font-size: 1vw;
         white-space: nowrap;
         transition: all 0.3s ease;
+        border: none;
+        background: none;
+        cursor: pointer;
 
         &:hover {
             opacity: 0.8;
         }
+    }
+}
+
+.logout-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+
+    .popup-content {
+        background-color: #fff;
+        padding: 20px 40px;
+        border-radius: 10px;
+        font-family: "ClashGrotesk-Medium", sans-serif;
+        font-size: 1.2rem;
+        color: #000;
     }
 }
