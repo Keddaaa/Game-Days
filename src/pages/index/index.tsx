@@ -278,7 +278,7 @@ const Index = () => {
 						className="voir"
 						onClick={() => navigateAndScroll("/vote")}
 					>
-						<span>Voter maintenant</span>
+						<span>Voter maintenant</span> 
 						<img src="/icons/arrowRight.svg" alt="" />
 					</button>
 				</div>
