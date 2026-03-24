@@ -12,7 +12,6 @@ const premiervote = () => {
 	const gamesList = [
 		"Mario Kart",
 		"Mario Party",
-		"Rocket League",
 		"Brawlhalla",
 		"NBA 2k26",
 		"Smash Bros Ultimate",
@@ -56,9 +55,7 @@ const premiervote = () => {
 							<button
 								key={game}
 								className={`game-option ${
-									selectedGames.includes(game)
-										? "active"
-										: ""
+									selectedGames.includes(game) ? "active" : ""
 								}`}
 								onClick={() => toggleLocalGame(game)}
 							>

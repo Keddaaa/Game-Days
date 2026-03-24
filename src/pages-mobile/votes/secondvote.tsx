@@ -1,33 +1,31 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./vote6.scss";
 import { useVote } from "../../context/VoteContext";
 import { authService } from "../../../src/services/authService";
-
-type Jeu = {
-	id_jeu: number;
-	nom_jeu: string;
-	categorie: string;
-};
 
 const secondvoteMobile = () => {
 	const navigate = useNavigate();
 	const { selectedGames, setSelectedGames } = useVote();
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [jeux, setJeux] = useState<Jeu[]>([]);
 
-	useEffect(() => {
-		authService.getJeux().then((jeuxRecup) => {
-			const jeuxCompetitif = jeuxRecup.filter((j: Jeu) => j.categorie === "competitif");
-			setJeux(jeuxCompetitif);
-		});
-	}, []);
+	const gamesList = [
+		"Mario Kart",
+		"Mario Party",
+		"Rocket League",
+		"Brawlhalla",
+		"NBA 2k26",
+		"Smash Bros Ultimate",
+		"Naruto Storm 4",
+		"Peut importe je veux juste découvrir",
+		"Je ne suis pas intéressé(e) par cet espace",
+	];
 
-	const toggleGame = (gameId: number) => {
-		if (selectedGames.includes(gameId)) {
-			setSelectedGames(selectedGames.filter((g: number) => g !== gameId));
+	const toggleLocalGame = (gameName: string) => {
+		if (selectedGames.includes(gameName)) {
+			setSelectedGames(selectedGames.filter((g) => g !== gameName));
 		} else {
-			setSelectedGames([...selectedGames, gameId]);
+			setSelectedGames([...selectedGames, gameName]);
 		}
 	};
 
@@ -35,7 +33,9 @@ const secondvoteMobile = () => {
 		setIsSubmitting(true);
 		try {
 			for (const gameId of selectedGames) {
-				await authService.saveVote(gameId);
+				if (typeof gameId === "number") {
+					await authService.saveVote(gameId);
+				}
 			}
 		} catch (error) {
 			console.error("Erreur lors de l'envoi des votes:", error);
@@ -64,15 +64,15 @@ const secondvoteMobile = () => {
 					</p>
 
 					<div className="games-list">
-						{jeux.map((game) => (
+						{gamesList.map((game) => (
 							<button
-								key={game.id_jeu}
+								key={game}
 								className={`game-option ${
-									selectedGames.includes(game.id_jeu) ? "active" : ""
+									selectedGames.includes(game) ? "active" : ""
 								}`}
-								onClick={() => toggleGame(game.id_jeu)}
+								onClick={() => toggleLocalGame(game)}
 							>
-								{game.nom_jeu}
+								{game}
 							</button>
 						))}
 					</div>

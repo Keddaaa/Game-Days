@@ -10,13 +10,12 @@ const secondvote = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const gamesList = [
-		"Mario Kart",
-		"Mario Party",
+		"FC 26 (équipe de deux)",
 		"Rocket League",
 		"Brawlhalla",
-		"NBA 2k26",
+		"Tekken 8",
 		"Smash Bros Ultimate",
-		"Naruto Storm 4",
+		"Street Fighter 6",
 		"Peut importe je veux juste découvrir",
 		"Je ne suis pas intéressé(e) par cet espace",
 	];
