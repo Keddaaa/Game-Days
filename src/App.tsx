@@ -15,10 +15,12 @@ import Vote8 from "./pages/votes/finvote.tsx";
 import Index from "./pages/index/index";
 import Login from "./pages/login/login";
 import Inscription from "./pages/inscription/inscription";
+import Galerie from "./pages/galerie/galerie";
 
 // Pages Mobile
 import IndexMobile from "./pages-mobile/index/index";
 import { LoginMobile } from "./pages-mobile/LoginMobile/LoginMobile";
+import GalerieMobile from "./pages-mobile/galerie/galerie";
 import VoteMobile from "./pages-mobile/votes/vote";
 import PremiersondageMobile from "./pages-mobile/votes/premiersondage";
 import SecondsondageMobile from "./pages-mobile/votes/secondsondage";
@@ -33,6 +35,7 @@ function App() {
     const isLoginPage =
         location.pathname === "/login" || location.pathname === "/inscription";
     const isVotePage = ["/vote", "/premiersondage", "/secondsondage", "/troisiemesondage", "/finsondage", "/premiervote", "/secondvote", "/finvote"].includes(location.pathname);
+    const isGaleriePage = location.pathname === "/galerie";
     const [isMobile, setIsMobile] = useState(false);
 
     // Check if mobile au chargement comme au
@@ -48,7 +51,7 @@ function App() {
 
     return (
         <>
-            {!isLoginPage && !isVotePage && !isMobile && <Navbar />}
+            {!isLoginPage && !isVotePage && !isGaleriePage && !isMobile && <Navbar />}
             <Routes>
                 {isMobile ? (
                     <>
@@ -80,6 +83,7 @@ function App() {
                             element={<SecondvoteMobile />}
                         />
                         <Route path="/finvote" element={<FinvoteMobile />} />
+                        <Route path="/galerie" element={<GalerieMobile />} />
                         <Route path="*" element={<IndexMobile />} />
                     </>
                 ) : (
@@ -87,6 +91,7 @@ function App() {
                         <Route path="/" element={<Index />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/inscription" element={<Inscription />} />
+                        <Route path="/galerie" element={<Galerie />} />
                         <Route path="*" element={<Index />} />
                         <Route path="/vote" element={<Vote />} />
                         <Route path="/premiersondage" element={<Vote1 />} />
@@ -99,7 +104,7 @@ function App() {
                     </>
                 )}
             </Routes>
-            {!isLoginPage && !isVotePage && <Footer />}
+            {!isLoginPage && !isVotePage && !isGaleriePage && <Footer />}
         </>
     );
 }
