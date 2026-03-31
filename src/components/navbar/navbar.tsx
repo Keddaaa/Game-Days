@@ -30,6 +30,7 @@ const Navbar = () => {
         { id: "accueil", label: "Accueil" },
         { id: "evenement", label: "L'événement" },
         { id: "vote", label: "Vote tes jeux" },
+        { id: "galerie", label: "Galerie", isPage: true },
         { id: "contact", label: "Contact" },
     ];
 
@@ -97,18 +98,34 @@ const Navbar = () => {
 
                     {navLinks.map((link) => (
                         <li key={link.id}>
-                            <a
-                                href={`#${link.id}`}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    scrollToSection(link.id);
-                                }}
-                                className={
-                                    activeSection === link.id ? "active" : ""
-                                }
-                            >
-                                {link.label}
-                            </a>
+                            {"isPage" in link && link.isPage ? (
+                                <a
+                                    href={`/${link.id}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        navigate(`/${link.id}`);
+                                        window.scrollTo(0, 0);
+                                    }}
+                                    className={
+                                        activeSection === link.id ? "active" : ""
+                                    }
+                                >
+                                    {link.label}
+                                </a>
+                            ) : (
+                                <a
+                                    href={`#${link.id}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        scrollToSection(link.id);
+                                    }}
+                                    className={
+                                        activeSection === link.id ? "active" : ""
+                                    }
+                                >
+                                    {link.label}
+                                </a>
+                            )}
                         </li>
                     ))}
                 </ul>
